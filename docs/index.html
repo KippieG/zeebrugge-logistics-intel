@@ -17,6 +17,7 @@
         <a href="#executive">Executive case</a>
         <a href="#dataset">Dataset</a>
         <a href="#signals">Signals</a>
+        <a href="#stack-tags">Stack tags</a>
         <a href="#matrix">Matrix</a>
         <a href="#taxonomy">Taxonomy</a>
         <a href="#opportunities">Opportunities</a>
@@ -130,6 +131,52 @@
         </div>
       </section>
 
+      <section class="band band--light" id="visuals">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Signal dashboard</p>
+            <h2>Research Shape At A Glance</h2>
+          </div>
+          <p class="section-copy">Four compact views show how the dataset is distributed by confidence, operating segment, evidence type and opportunity priority.</p>
+        </div>
+        <div class="chart-grid">
+          <article class="mini-chart">
+            <h3>Confidence distribution</h3>
+            <div class="bar-row"><span>High</span><div><i style="--w: 5%"></i></div><strong>1</strong></div>
+            <div class="bar-row"><span>Medium</span><div><i style="--w: 30%"></i></div><strong>6</strong></div>
+            <div class="bar-row"><span>Low</span><div><i style="--w: 65%"></i></div><strong>13</strong></div>
+          </article>
+          <article class="mini-chart">
+            <h3>Segment breakdown</h3>
+            <div class="donut-list">
+              <span><i class="dot dot--green"></i>Terminals and RoRo</span>
+              <span><i class="dot dot--teal"></i>Intermodal and warehousing</span>
+              <span><i class="dot dot--rust"></i>Forwarding and customs</span>
+              <span><i class="dot dot--steel"></i>Port/data and energy</span>
+            </div>
+          </article>
+          <article class="mini-chart">
+            <h3>Observed vs inferred</h3>
+            <div class="split-meter" aria-label="Observed inferred and mixed evidence distribution">
+              <span class="split-meter__observed">Observed</span>
+              <span class="split-meter__mixed">Mixed</span>
+              <span class="split-meter__inferred">Inferred</span>
+            </div>
+            <p>Port-community systems are strongest; operational stack signals need field validation.</p>
+          </article>
+          <article class="mini-chart">
+            <h3>Opportunity priority</h3>
+            <div class="priority-grid" aria-label="Opportunity priority matrix">
+              <span class="priority-cell priority-cell--high">Yard visibility</span>
+              <span class="priority-cell priority-cell--high">Customs automation</span>
+              <span class="priority-cell priority-cell--medium">ETA forecasting</span>
+              <span class="priority-cell priority-cell--medium">Sales intelligence</span>
+              <span class="priority-cell priority-cell--medium">API readiness</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section class="band band--light" id="signals">
         <div class="section-head section-head--split">
           <div>
@@ -169,6 +216,83 @@
           <span>Google Tag Manager</span>
           <span>Cookiebot</span>
           <span>OneTrust</span>
+        </div>
+      </section>
+
+      <section class="band" id="stack-tags">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Full tech-stack view</p>
+            <h2>All Stack Tags In One Place</h2>
+          </div>
+          <p class="section-copy">A clean overview of the operational systems, port-community platforms, planning tools, analytics signals and visible web-channel technologies found or inferred in the research.</p>
+        </div>
+        <div class="stack-overview">
+          <article>
+            <h3>Observed port and data layer</h3>
+            <div class="tag-cloud" aria-label="Observed port and data layer tags">
+              <span class="tag tag--observed">APICS</span>
+              <span class="tag tag--observed">ZEDIS</span>
+              <span class="tag tag--observed">NxtPort</span>
+              <span class="tag tag--observed">RX-SeaPort</span>
+              <span class="tag tag--observed">IRP</span>
+              <span class="tag tag--observed">Terminal API</span>
+              <span class="tag tag--observed">APICA digital twin</span>
+              <span class="tag tag--observed">Smart cameras</span>
+              <span class="tag tag--observed">ETA Terminal Tool</span>
+            </div>
+          </article>
+          <article>
+            <h3>Terminal, yard and transport systems</h3>
+            <div class="tag-cloud" aria-label="Terminal yard and transport system tags">
+              <span class="tag tag--inferred">TOS</span>
+              <span class="tag tag--inferred">YMS</span>
+              <span class="tag tag--inferred">VMS</span>
+              <span class="tag tag--inferred">Gate OCR</span>
+              <span class="tag tag--inferred">Crane/OCR options</span>
+              <span class="tag tag--inferred">Vehicle inventory</span>
+              <span class="tag tag--inferred">Trailer visibility</span>
+              <span class="tag tag--inferred">Slot booking</span>
+              <span class="tag tag--inferred">Rail planning</span>
+              <span class="tag tag--inferred">TMS</span>
+              <span class="tag tag--inferred">WMS</span>
+              <span class="tag tag--inferred">EDI/API</span>
+            </div>
+          </article>
+          <article>
+            <h3>Customs, analytics and energy operations</h3>
+            <div class="tag-cloud" aria-label="Customs analytics and energy operations tags">
+              <span class="tag tag--mixed">Customs declaration software</span>
+              <span class="tag tag--mixed">Document automation</span>
+              <span class="tag tag--mixed">Release-status queues</span>
+              <span class="tag tag--mixed">Microsoft Analytics</span>
+              <span class="tag tag--mixed">Reporting Services</span>
+              <span class="tag tag--mixed">BI dashboards</span>
+              <span class="tag tag--mixed">Dwell-time models</span>
+              <span class="tag tag--mixed">ETA prediction</span>
+              <span class="tag tag--mixed">Demand forecasts</span>
+              <span class="tag tag--mixed">SCADA/OT</span>
+              <span class="tag tag--mixed">Nominations</span>
+              <span class="tag tag--mixed">Compliance reporting</span>
+            </div>
+          </article>
+          <article>
+            <h3>Visible web-channel signals</h3>
+            <div class="tag-cloud" aria-label="Visible web channel technology tags">
+              <span class="tag tag--web">Drupal</span>
+              <span class="tag tag--web">WordPress</span>
+              <span class="tag tag--web">Next.js</span>
+              <span class="tag tag--web">React</span>
+              <span class="tag tag--web">Vue</span>
+              <span class="tag tag--web">Cloudflare</span>
+              <span class="tag tag--web">Google Tag Manager</span>
+              <span class="tag tag--web">Google Analytics</span>
+              <span class="tag tag--web">Cookiebot</span>
+              <span class="tag tag--web">OneTrust</span>
+              <span class="tag tag--web">Bootstrap</span>
+              <span class="tag tag--web">jQuery</span>
+            </div>
+          </article>
         </div>
       </section>
 

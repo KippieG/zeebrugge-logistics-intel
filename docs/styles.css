@@ -236,9 +236,11 @@ h3 {
 .metrics,
 .signal-grid,
 .commercial-grid,
+.chart-grid,
 .opportunity-list,
 .taxonomy-grid,
 .tech-strip,
+.stack-overview,
 .workflow,
 .download-strip,
 .proof-grid {
@@ -358,6 +360,139 @@ h3 {
   gap: 16px;
 }
 
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.mini-chart {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+  background: var(--white);
+}
+
+.mini-chart p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) 28px;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.bar-row div {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #edf1ec;
+}
+
+.bar-row i {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green);
+}
+
+.donut-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.donut-list span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.dot--green {
+  background: var(--green);
+}
+
+.dot--teal {
+  background: var(--teal);
+}
+
+.dot--rust {
+  background: var(--rust);
+}
+
+.dot--steel {
+  background: var(--steel);
+}
+
+.split-meter {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.4fr;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 16px;
+  color: var(--white);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.split-meter span {
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.split-meter__observed {
+  background: var(--green);
+}
+
+.split-meter__mixed {
+  background: var(--teal);
+}
+
+.split-meter__inferred {
+  background: var(--rust);
+}
+
+.priority-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.priority-cell {
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.priority-cell--high {
+  background: rgba(31, 111, 91, 0.12);
+  color: var(--green);
+}
+
+.priority-cell--medium {
+  background: rgba(176, 91, 53, 0.12);
+  color: var(--rust);
+}
+
 .signal-grid article {
   padding: 22px;
 }
@@ -393,6 +528,61 @@ h3 {
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 900;
+}
+
+.stack-overview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stack-overview article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+  background: var(--white);
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.tag {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.tag--observed {
+  border-color: rgba(31, 111, 91, 0.22);
+  background: rgba(31, 111, 91, 0.1);
+  color: var(--green);
+}
+
+.tag--inferred {
+  border-color: rgba(176, 91, 53, 0.22);
+  background: rgba(176, 91, 53, 0.1);
+  color: var(--rust);
+}
+
+.tag--mixed {
+  border-color: rgba(31, 127, 143, 0.22);
+  background: rgba(31, 127, 143, 0.1);
+  color: var(--teal);
+}
+
+.tag--web {
+  border-color: rgba(86, 107, 122, 0.24);
+  background: rgba(86, 107, 122, 0.1);
+  color: var(--steel);
 }
 
 .matrix {
@@ -613,9 +803,11 @@ h3 {
   .section-head--split,
   .proof-grid,
   .commercial-grid,
+  .chart-grid,
   .metrics,
   .signal-grid,
   .method-grid,
+  .stack-overview,
   .taxonomy-grid,
   .workflow {
     grid-template-columns: 1fr;

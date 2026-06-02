@@ -12,6 +12,12 @@ An executive-ready intelligence repo that turns public Zeebrugge port-logistics 
 **Scope:** Zeebrugge-focused logistics ecosystem, with Port of Antwerp-Bruges context  
 **What this is:** market intelligence, data modeling, source scraping, tech-stack inference and commercial opportunity mapping in one portfolio project
 
+## What I Built
+
+- Collected, registered and scraped **33 public sources** into reviewable source extracts.
+- Modeled **9 structured datasets** with source IDs, confidence labels and automated validation.
+- Translated public signals into **5 commercial software opportunities** for logistics-tech buyers.
+
 ## The Short Version
 
 Zeebrugge is a dense logistics gateway with automotive/RoRo, UK-Ireland shortsea, container handling, intermodal warehousing, customs workflows and LNG/energy logistics. That mix creates recurring operational pain around visibility, release status, yard coordination, document flow and data interoperability.
@@ -136,6 +142,19 @@ The company dataset maps operators into practical segments:
 | Forwarders, customs and agencies | Alltraco, Dens Ocean, RBZ, Herfurth / M-Star, Notman | Customs declaration software, freight TMS, document automation, APICS/ZEDIS workflows |
 | Energy logistics | Fluxys LNG Terminal Zeebrugge | SCADA/OT, nominations, scheduling, safety systems, compliance reporting |
 
+## Complete Tech Stack Tag View
+
+The repo separates operational technology, ecosystem platforms and visible web-channel signals. This keeps the analysis useful without pretending that a public website stack proves the back-office or terminal stack.
+
+| Layer | Tags |
+| --- | --- |
+| Observed port and data layer | `APICS`, `ZEDIS`, `NxtPort`, `RX-SeaPort`, `IRP`, `Terminal API`, `APICA digital twin`, `smart cameras`, `ETA Terminal Tool` |
+| Terminal, yard and transport systems | `TOS`, `YMS`, `VMS`, `gate OCR`, `crane/OCR options`, `vehicle inventory`, `trailer visibility`, `slot booking`, `rail planning`, `TMS`, `WMS`, `EDI/API` |
+| Customs, analytics and energy operations | `customs declaration software`, `document automation`, `release-status queues`, `Microsoft Analytics`, `Reporting Services`, `BI dashboards`, `dwell-time models`, `ETA prediction`, `demand forecasts`, `SCADA/OT`, `nominations`, `compliance reporting` |
+| Visible web-channel signals | `Drupal`, `WordPress`, `Next.js`, `React`, `Vue`, `Cloudflare`, `Google Tag Manager`, `Google Analytics`, `Cookiebot`, `OneTrust`, `Bootstrap`, `jQuery` |
+
+Observed stack tags are strongest around the port-community layer. Inferred tags are operationally plausible from the company segment and should be validated through interviews, job postings, vendor cases or direct system evidence.
+
 ## Commercial Opportunity Map
 
 The analysis points toward five software opportunities that are narrow enough to be useful and broad enough to be commercially interesting.
@@ -163,8 +182,19 @@ The GitHub Pages dashboard in [`docs/`](docs/index.html) turns the research into
 
 Live page: https://kippieg.github.io/zeebrugge-logistics-intel/
 
+### Dashboard Screenshots
+
+![Dashboard hero screenshot](docs/assets/dashboard-hero-screenshot.png)
+
+![Full tech-stack tag screenshot](docs/assets/dashboard-stack-tags-screenshot.png)
+
+![Company stack matrix screenshot](docs/assets/dashboard-stack-matrix-screenshot.png)
+
+![Opportunity map screenshot](docs/assets/dashboard-opportunity-screenshot.png)
+
 ## Research Outputs
 
+- [`reports/executive-brief.md`](reports/executive-brief.md): one-page manager summary with top findings, opportunities, risks and recommended next research.
 - [`reports/analysis.md`](reports/analysis.md): executive take, market map, technology signals, gaps and 2026 outlook.
 - [`reports/opportunity-playbook.md`](reports/opportunity-playbook.md): practical product and sales hypotheses for yard visibility, customs automation, forecasting and API readiness.
 - [`reports/enrichment-guide.md`](reports/enrichment-guide.md): workflow for APZI expansion, webtech checks, job signals, registry research and contact-role mapping.
