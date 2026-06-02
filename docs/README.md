@@ -1,6 +1,6 @@
 # GitHub Pages
 
-This folder contains the static project page for Zeebrugge Logistics Intel.
+This folder contains the static project page for Zeebrugge Port Tech Intelligence.
 
 The repository includes `.github/workflows/pages.yml`, which publishes this
 folder through GitHub Pages when pushes land on `main`.

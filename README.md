@@ -1,129 +1,130 @@
-# Zeebrugge Logistics Intel
+# Zeebrugge Port Tech Intelligence
 
-Public market-intelligence snapshot of logistics companies, terminal operators, and digital infrastructure around Zeebrugge / Port of Antwerp-Bruges.
+Research-grade market map of logistics companies, terminal operators, public technology signals and commercial software opportunities around Zeebrugge / Port of Antwerp-Bruges.
 
-This project combines desk research, source scraping, and structured analysis to map where logistics-tech opportunities are likely to sit: yard visibility, customs digitization, terminal orchestration, intermodal planning, and data interoperability.
+[![Validate dataset](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/validate.yml/badge.svg)](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/validate.yml)
+[![Deploy GitHub Pages](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/pages.yml/badge.svg)](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/pages.yml)
 
-**Snapshot date:** 2026-06-02  
-**Scope:** Zeebrugge-focused logistics ecosystem, with Port of Antwerp-Bruges context  
-**Status:** Portfolio-ready research prototype, not a complete commercial database
+**Snapshot:** 2026-06-02  
+**Scope:** Zeebrugge-focused port and logistics ecosystem, with Port of Antwerp-Bruges context  
+**Output:** Static intelligence dashboard, structured CSV datasets, scraped source extracts, enrichment scripts and opportunity analysis  
+**Live page:** https://kippieg.github.io/zeebrugge-logistics-intel/
 
-## Project Outputs
+## Why This Exists
 
-- [Portfolio page](docs/index.html): static GitHub Pages-ready project overview.
-- [Company dataset](data/companies.csv): 20 seed companies/platforms with service categories and public tech-stack signals.
-- [Source register](data/sources.csv): 33 public sources used for the current snapshot.
-- [Stack taxonomy](data/stack_taxonomy.csv): reusable map of port-logistics technology layers.
-- [Opportunity dataset](data/opportunities.csv): product opportunities, buyer segments, pain signals, and go-to-market notes.
-- [Company enrichment](data/company_enrichment.csv): webtech, job, VAT/registry, financial and contact-role signals.
-- [Webtech scan](data/web_tech_scan.csv): lightweight local scan of public company domains.
-- [APZI board signals](data/apzi_board_signals.csv): APZI segment representation mapped to tech relevance.
-- [APZI member candidates](data/apzi_member_candidates.csv): visible-text extraction from the public APZI members page.
-- [Scraped extracts](data/scraped): text extracts generated from the source register.
-- [Analysis report](reports/analysis.md): market map, technology signals, opportunities, and 2026 outlook.
-- [Opportunity playbook](reports/opportunity-playbook.md): practical product and sales hypotheses derived from the dataset.
-- [Enrichment guide](reports/enrichment-guide.md): workflow for APZI expansion, webtech checks, job signals, registry research and contact-role mapping.
-- [Scraper](scripts/scrape_seed.py): dependency-free Python scraper for the seed URLs.
-- [APZI extractor](scripts/extract_apzi_members.py): conservative visible-text extractor for APZI member/category pages.
-- [Webtech detector](scripts/detect_web_tech.py): lightweight website fingerprint collector.
-- [Dataset validator](scripts/validate_dataset.py): dependency-free consistency checks for company rows, source IDs, and scraped extracts.
+Zeebrugge is a concentrated logistics gateway with strong activity in automotive/RoRo, UK-Ireland shortsea, intermodal warehousing, customs workflows, container handling and LNG/energy logistics. That mix creates a practical research target for port-logistics software opportunities:
 
-## Why This Is Useful
+- yard visibility and dwell-time tracking
+- customs release and document automation
+- terminal orchestration and gate workflows
+- TMS/WMS/rail planning and customer visibility
+- data interoperability through port-community platforms
+- sales intelligence for logistics-tech vendors
 
-Zeebrugge is a specialized logistics gateway with strong activity in:
+The project separates **observed public technology signals** from **inferred operational stack needs** so the data stays useful without overstating what public sources prove.
 
-- Automotive and RoRo logistics
-- UK/Ireland shortsea and intermodal flows
-- Container and paper logistics
-- LNG and energy logistics
-- Customs, forwarding, and shipping agency workflows
+## Dashboard
 
-The most visible technology layer is ecosystem-level rather than company-level: APICS, ZEDIS, NxtPort/RX-SeaPort, IRP, APICA digital twin, smart cameras, and terminal APIs. Company-level stacks are often inferred from operations unless vendors are publicly named.
+The static dashboard in [`docs/`](docs/index.html) is designed for GitHub Pages and summarizes the research as a visual portfolio page.
+
+Screenshots are generated by Playwright visual smoke tests and written to `test-results/` locally.
+
+```sh
+npm install
+npx playwright install chromium
+npm run test:visual
+```
+
+## Dataset At A Glance
+
+| Area | Count | File |
+| --- | ---: | --- |
+| Seed companies and platforms | 20 | [`data/companies.csv`](data/companies.csv) |
+| Public source register | 33 | [`data/sources.csv`](data/sources.csv) |
+| Scraped source extracts | 33 | [`data/scraped/`](data/scraped) |
+| Port-logistics stack layers | 6 | [`data/stack_taxonomy.csv`](data/stack_taxonomy.csv) |
+| Product opportunities | 5 | [`data/opportunities.csv`](data/opportunities.csv) |
+| Company enrichment rows | 20 | [`data/company_enrichment.csv`](data/company_enrichment.csv) |
+| APZI board/segment signals | 17 | [`data/apzi_board_signals.csv`](data/apzi_board_signals.csv) |
+| APZI public-page candidates | 22 | [`data/apzi_member_candidates.csv`](data/apzi_member_candidates.csv) |
+| Webtech scan rows | 20 | [`data/web_tech_scan.csv`](data/web_tech_scan.csv) |
+
+## Key Findings
+
+- The strongest verified ecosystem signals are **APICS**, **ZEDIS**, **NxtPort/RX-SeaPort**, **IRP**, **APICA digital twin**, smart cameras and terminal API tooling.
+- Company-level operational stacks are mostly not publicly named, so TOS/YMS/WMS/TMS/EDI/API signals are marked as inferred unless a source names a vendor or product.
+- ECS has a public Microsoft Analytics / Reporting Services signal and additional job signals around automated warehouses, digitization, automation engineers and information systems.
+- CSP Zeebrugge has public VAT/contact data, ZPMC crane infrastructure, a VBS web application manual, and IT hiring signals.
+- Lightweight website scans found visible web-channel signals such as Drupal, WordPress, Next.js, React, Cloudflare, Google Tag Manager, Cookiebot and OneTrust across seed domains.
+- APZI public pages confirm a roughly 160-company ecosystem and expose categories/board representation, but not a clean full member export through simple HTML scraping.
+
+## Research Outputs
+
+- [`reports/analysis.md`](reports/analysis.md): market map, technology signals, gaps and 2026 outlook.
+- [`reports/opportunity-playbook.md`](reports/opportunity-playbook.md): product and sales hypotheses for yard visibility, customs automation, forecasting and API readiness.
+- [`reports/enrichment-guide.md`](reports/enrichment-guide.md): workflow for APZI expansion, webtech checks, job signals, registry research and contact-role mapping.
+- [`data/research_backlog.csv`](data/research_backlog.csv): status-tracked next research workstreams.
+
+## Reproduce The Workflow
+
+Install local tooling:
+
+```sh
+npm install
+npx playwright install chromium
+```
+
+Validate all structured datasets:
+
+```sh
+npm run validate:data
+```
+
+Run the full local check:
+
+```sh
+npm run check
+```
+
+Refresh source extracts:
+
+```sh
+npm run scrape:sources
+```
+
+Run enrichment scripts:
+
+```sh
+npm run scrape:apzi
+npm run scan:webtech
+```
+
+## Methodology
+
+Signals are deliberately conservative:
+
+- `observed`: a public source names the system, platform, product or vendor directly.
+- `inferred`: the stack is operationally likely from services such as terminal operations, customs, warehousing, intermodal planning or track-and-trace, but no vendor is named.
+- `unknown`: no reliable public signal was found.
+
+Commercial use should validate inferred stack data through company interviews, official filings, job postings, vendor cases, Wappalyzer/BuiltWith checks, procurement data or direct outreach.
 
 ## Repository Structure
 
 ```text
 .
-├── data/
-│   ├── companies.csv
-│   ├── company_enrichment.csv
-│   ├── opportunities.csv
-│   ├── apzi_board_signals.csv
-│   ├── apzi_member_candidates.csv
-│   ├── sources.csv
-│   ├── stack_taxonomy.csv
-│   ├── research_backlog.csv
-│   ├── web_tech_scan.csv
-│   └── scraped/
-├── docs/
-│   ├── index.html
-│   └── styles.css
-├── reports/
-│   ├── analysis.md
-│   ├── enrichment-guide.md
-│   └── opportunity-playbook.md
-└── scripts/
-    ├── detect_web_tech.py
-    ├── extract_apzi_members.py
-    ├── scrape_seed.py
-    └── validate_dataset.py
+├── data/                  # CSV datasets and scraped source extracts
+├── docs/                  # Static GitHub Pages dashboard
+├── reports/               # Analysis, playbook and enrichment guide
+├── scripts/               # Scraping, enrichment and validation scripts
+├── tests/                 # Playwright visual smoke tests
+└── .github/workflows/     # Dataset validation and Pages deployment
 ```
 
-## Run The Scraper
+## Next Research Moves
 
-```sh
-python3 scripts/scrape_seed.py
-```
-
-Latest scrape result:
-
-- 33 seed sources attempted.
-- 31 sources produced text extracts.
-- 2 temporary failures were captured as error extracts: Notman Logistics returned HTTP 503; one industry-news source failed DNS resolution locally.
-- APZI confirms roughly 160 Zeebrugge port companies, but its public member page exposes mostly categories/search UI to this simple HTML scraper. A complete member export needs browser/API scraping or direct APZI data.
-
-## Run Enrichment Scripts
-
-```sh
-python3 scripts/extract_apzi_members.py
-python3 scripts/detect_web_tech.py
-```
-
-The APZI extractor writes conservative visible-text candidates rather than claiming a full member export. The webtech detector is not a Wappalyzer replacement; it records reproducible local signals from headers, scripts and generator tags.
-
-## Validate The Dataset
-
-```sh
-python3 scripts/validate_dataset.py
-```
-
-The validator checks required CSV headers, duplicate records, confidence values, company-to-source references, opportunity priorities, stack-taxonomy structure, and scraped extract coverage.
-
-## Methodology
-
-Tech-stack labels are deliberately conservative:
-
-- `observed`: explicitly mentioned in public sources, for example NxtPort, APICS, ZEDIS, IRP, Microsoft Analytics.
-- `inferred`: operationally likely from services such as terminal operations, customs, warehousing, intermodal planning, or track-and-trace.
-- `unknown`: no reliable public signal found.
-
-For investment, sales, or partnership decisions, validate inferred tech stacks with job postings, vendor case studies, Wappalyzer/BuiltWith, procurement data, company interviews, or direct outreach.
-
-## Portfolio Angle
-
-This repo demonstrates:
-
-- Market research from public sources
-- Structured CSV data modeling
-- Lightweight scraping without dependencies
-- Dataset validation and reproducibility
-- Logistics-domain analysis
-- Clear separation between observed facts and inferred signals
-- A static data-story page suitable for GitHub Pages
-
-## Next Improvements
-
-- Add APZI member export through browser/API scraping or direct data access.
-- Add job-posting signals for ERP, TMS, WMS, BI, cloud, and cybersecurity vendors.
-- Add Wappalyzer/BuiltWith checks for company web stacks.
-- Add Belgian registry identifiers, VAT numbers, financial signals, and contact roles.
+- Pull a full APZI member export through browser/API inspection or direct APZI/Voka access.
+- Run manual Wappalyzer/BuiltWith checks and compare them with [`data/web_tech_scan.csv`](data/web_tech_scan.csv).
+- Add job-posting evidence for ERP, TMS, WMS, BI, cloud, cybersecurity and terminal-planning vendors.
+- Verify VAT, registry and financial signals through official KBO/BCE and NBB sources.
+- Add role-level outreach mapping for operations, IT, customs, terminal planning and commercial teams.

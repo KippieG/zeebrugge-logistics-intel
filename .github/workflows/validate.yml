@@ -16,5 +16,20 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
       - name: Validate dataset
-        run: python3 scripts/validate_dataset.py
+        run: npm run validate:data
+
+      - name: Visual smoke test
+        run: npm run test:visual
