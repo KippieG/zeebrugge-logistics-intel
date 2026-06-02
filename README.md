@@ -12,6 +12,21 @@ An executive-ready intelligence repo that turns public Zeebrugge port-logistics 
 **Scope:** Zeebrugge-focused logistics ecosystem, with Port of Antwerp-Bruges context  
 **What this is:** market intelligence, data modeling, source scraping, tech-stack inference and commercial opportunity mapping in one portfolio project
 
+## Project Labels
+
+![Market Intelligence](https://img.shields.io/badge/market-intelligence-1f6f5b?style=for-the-badge)
+![Port Operations](https://img.shields.io/badge/port-operations-1f7f8f?style=for-the-badge)
+![Web Scraping](https://img.shields.io/badge/web-scraping-b05b35?style=for-the-badge)
+![Data Validation](https://img.shields.io/badge/data-validation-566b7a?style=for-the-badge)
+![GitHub Pages](https://img.shields.io/badge/github-pages-24302b?style=for-the-badge)
+![Playwright QA](https://img.shields.io/badge/playwright-QA-1f6f5b?style=for-the-badge)
+
+![Tech Stack Mapping](https://img.shields.io/badge/tech--stack-mapping-1f7f8f?style=for-the-badge)
+![Customs Workflows](https://img.shields.io/badge/customs-workflows-b05b35?style=for-the-badge)
+![Yard Visibility](https://img.shields.io/badge/yard-visibility-1f6f5b?style=for-the-badge)
+![Supply Chain](https://img.shields.io/badge/supply-chain-566b7a?style=for-the-badge)
+![Commercial Analysis](https://img.shields.io/badge/commercial-analysis-24302b?style=for-the-badge)
+
 ## What I Built
 
 - Collected, registered and scraped **33 public sources** into reviewable source extracts.
