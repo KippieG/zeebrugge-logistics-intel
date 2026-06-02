@@ -4,73 +4,105 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Zeebrugge Port Tech Intelligence</title>
-    <meta name="description" content="Port-logistics technology intelligence dashboard for Zeebrugge: companies, terminal operators, public tech-stack signals, enrichment data and software opportunities.">
+    <meta name="description" content="Portfolio-grade port-logistics intelligence dashboard for Zeebrugge: companies, terminal operators, public tech-stack signals, enrichment data and software opportunities.">
+    <meta property="og:title" content="Zeebrugge Port Tech Intelligence">
+    <meta property="og:description" content="A public-data intelligence product turning port-logistics signals into commercial software opportunities.">
+    <meta property="og:image" content="assets/zeebrugge-intelligence-hero.png">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="hero">
       <nav class="nav" aria-label="Project navigation">
+        <a class="nav__brand" href="#">Zeebrugge Intel</a>
+        <a href="#executive">Executive case</a>
         <a href="#dataset">Dataset</a>
         <a href="#signals">Signals</a>
         <a href="#matrix">Matrix</a>
         <a href="#taxonomy">Taxonomy</a>
         <a href="#opportunities">Opportunities</a>
         <a href="#method">Method</a>
-        <a href="../reports/analysis.md">Report</a>
       </nav>
+
       <div class="hero__layout">
         <div class="hero__copy">
-          <p class="eyebrow">Port of Antwerp-Bruges research snapshot</p>
+          <p class="eyebrow">Commercial intelligence portfolio</p>
           <h1>Zeebrugge Port Tech Intelligence</h1>
-          <p class="lead">A structured intelligence dashboard mapping port companies, terminal operators, public tech-stack signals, enrichment data, and software opportunities around Zeebrugge.</p>
+          <p class="lead">A polished intelligence product that maps port companies, terminal operators, public technology signals and software opportunities around Zeebrugge.</p>
           <div class="actions">
-            <a class="button button--primary" href="../data/companies.csv">Company dataset</a>
-            <a class="button" href="../reports/opportunity-playbook.md">Opportunity playbook</a>
-            <a class="button" href="https://github.com/KippieG/zeebrugge-logistics-intel">GitHub repo</a>
+            <a class="button button--primary" href="../reports/opportunity-playbook.md">Read the playbook</a>
+            <a class="button" href="../data/companies.csv">Open dataset</a>
+            <a class="button" href="https://github.com/KippieG/zeebrugge-logistics-intel">View code</a>
           </div>
           <dl class="hero-facts" aria-label="Project facts">
             <div>
-              <dt>Snapshot</dt>
-              <dd>2026-06-02</dd>
+              <dt>Signal volume</dt>
+              <dd>33 sources</dd>
             </div>
             <div>
-              <dt>Region</dt>
-              <dd>Zeebrugge / Port of Antwerp-Bruges</dd>
+              <dt>Business lens</dt>
+              <dd>5 opportunities</dd>
             </div>
             <div>
-              <dt>Evidence model</dt>
-              <dd>Observed, inferred, unknown</dd>
+              <dt>Delivery</dt>
+              <dd>Validated dashboard</dd>
             </div>
           </dl>
         </div>
-        <div class="port-visual" aria-label="Zeebrugge logistics ecosystem visual">
-          <div class="lane lane--auto"><span>Automotive / RoRo</span></div>
-          <div class="lane lane--intermodal"><span>UK-Ireland intermodal</span></div>
-          <div class="lane lane--terminal"><span>Container terminals</span></div>
-          <div class="lane lane--customs"><span>Customs data layer</span></div>
-          <div class="dock dock--one"></div>
-          <div class="dock dock--two"></div>
-          <div class="vessel"></div>
-          <div class="crane crane--one"></div>
-          <div class="crane crane--two"></div>
-        </div>
+
+        <figure class="hero-visual" aria-label="Zeebrugge logistics intelligence visual">
+          <img src="assets/zeebrugge-intelligence-hero.png" alt="Cinematic Zeebrugge port logistics scene with containers, RoRo lanes, rail and data overlays">
+          <figcaption>
+            <strong>Executive-ready output</strong>
+            <span>Public-source research translated into buyer segments, stack signals and opportunity hypotheses.</span>
+          </figcaption>
+        </figure>
       </div>
     </header>
 
     <main>
+      <section class="band band--intro" id="executive">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Executive case</p>
+            <h2>Built Like A Small Intelligence Product</h2>
+          </div>
+          <p class="section-copy">The repo shows more than research notes: it demonstrates structured data modeling, source discipline, automation, validation, visual storytelling and commercial thinking in one compact project.</p>
+        </div>
+        <div class="proof-grid">
+          <article>
+            <span>01</span>
+            <h3>For recruiters</h3>
+            <p>Shows end-to-end ownership: scraping, CSV design, validation, CI, dashboard polish and clear documentation.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>For managers</h3>
+            <p>Turns noisy public information into a practical view of markets, systems, risk and opportunity.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>For commercial teams</h3>
+            <p>Identifies likely buyer pain around customs, yard visibility, terminal orchestration and API readiness.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="band" id="dataset">
-        <div class="section-head">
-          <p class="eyebrow">Dataset</p>
-          <h2>Research Coverage</h2>
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Dataset</p>
+            <h2>Research Coverage</h2>
+          </div>
+          <p class="section-copy">A curated evidence base for understanding who operates in Zeebrugge, what systems are publicly visible and where software opportunities are likely to sit.</p>
         </div>
         <div class="metrics" aria-label="Dataset metrics">
-          <article class="metric">
+          <article class="metric metric--featured">
             <strong>20</strong>
-            <span>companies and platforms</span>
+            <span>companies and platforms mapped with source references</span>
           </article>
           <article class="metric">
             <strong>33</strong>
-            <span>public sources registered</span>
+            <span>public sources registered and scraped</span>
           </article>
           <article class="metric">
             <strong>9</strong>
@@ -94,29 +126,36 @@
           </article>
         </div>
         <div class="coverage-note">
-          <p>This is a conservative public-source snapshot. Ecosystem-level stack signals are stronger than company-level vendor disclosure, so inferred labels are intentionally separated from observed facts.</p>
+          <p>Signals are deliberately conservative: observed facts are separated from inferred operational stack needs, which keeps the analysis credible for business conversations.</p>
         </div>
       </section>
 
       <section class="band band--light" id="signals">
-        <div class="section-head">
-          <p class="eyebrow">Technology signals</p>
-          <h2>Where The Digital Layer Is Visible</h2>
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Technology signals</p>
+            <h2>Where The Digital Layer Is Visible</h2>
+          </div>
+          <p class="section-copy">The strongest evidence sits at the ecosystem layer, where port-community platforms, terminal workflows and customs tooling create repeatable software needs.</p>
         </div>
         <div class="signal-grid">
           <article>
+            <span class="signal-index">Observed</span>
             <h3>Port community systems</h3>
-            <p>APICS, ZEDIS, NxtPort/RX-SeaPort, and IRP are the strongest observed ecosystem signals.</p>
+            <p>APICS, ZEDIS, NxtPort/RX-SeaPort, and IRP are the strongest verified ecosystem signals.</p>
           </article>
           <article>
+            <span class="signal-index">Inferred</span>
             <h3>Terminal operations</h3>
             <p>Automotive, RoRo, and container operators likely depend on TOS, YMS, gate systems, EDI, and customer visibility.</p>
           </article>
           <article>
+            <span class="signal-index">Recurring</span>
             <h3>Intermodal logistics</h3>
             <p>UK/Ireland flows create recurring needs around customs, rail planning, trailer visibility, and warehouse coordination.</p>
           </article>
           <article>
+            <span class="signal-index">Commercial</span>
             <h3>Data interoperability</h3>
             <p>Clean APIs and event data are becoming a practical differentiator for shippers and logistics-tech vendors.</p>
           </article>
@@ -130,6 +169,30 @@
           <span>Google Tag Manager</span>
           <span>Cookiebot</span>
           <span>OneTrust</span>
+        </div>
+      </section>
+
+      <section class="band band--commercial">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Commercial read</p>
+            <h2>What A Manager Sees In One Minute</h2>
+          </div>
+          <p class="section-copy">The portfolio value is the translation layer: raw public sources become target segments, system hypotheses, confidence labels and next actions.</p>
+        </div>
+        <div class="commercial-grid">
+          <article>
+            <h3>Market shape</h3>
+            <p>Zeebrugge clusters automotive, RoRo, UK-Ireland shortsea, containers, energy logistics, forwarding and customs work.</p>
+          </article>
+          <article>
+            <h3>Buying triggers</h3>
+            <p>Visibility gaps, release workflows, gate coordination, dwell time and integration friction point toward real software budgets.</p>
+          </article>
+          <article>
+            <h3>Execution proof</h3>
+            <p>The repo ships with validation, CI, visual smoke tests, reproducible scripts and source-linked datasets.</p>
+          </article>
         </div>
       </section>
 
@@ -218,9 +281,12 @@
       </section>
 
       <section class="band" id="opportunities">
-        <div class="section-head">
-          <p class="eyebrow">Commercial read</p>
-          <h2>Opportunity Map</h2>
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Opportunity map</p>
+            <h2>Software Ideas With A Buyer Lens</h2>
+          </div>
+          <p class="section-copy">Each opportunity is framed from operational pain, buyer segment and go-to-market logic instead of being a generic feature list.</p>
         </div>
         <div class="opportunity-list">
           <article>
@@ -262,9 +328,12 @@
       </section>
 
       <section class="band band--light" id="method">
-        <div class="section-head">
-          <p class="eyebrow">Method</p>
-          <h2>How The Signals Were Scored</h2>
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Method</p>
+            <h2>How The Signals Were Scored</h2>
+          </div>
+          <p class="section-copy">The credibility comes from labeling what is observed, what is inferred and what still needs field validation.</p>
         </div>
         <div class="method-grid">
           <article>
