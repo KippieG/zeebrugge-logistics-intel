@@ -12,7 +12,10 @@
       <nav class="nav" aria-label="Project navigation">
         <a href="#dataset">Dataset</a>
         <a href="#signals">Signals</a>
+        <a href="#matrix">Matrix</a>
+        <a href="#taxonomy">Taxonomy</a>
         <a href="#opportunities">Opportunities</a>
+        <a href="#method">Method</a>
         <a href="../reports/analysis.md">Report</a>
       </nav>
       <div class="hero__layout">
@@ -22,8 +25,23 @@
           <p class="lead">A structured public-data project mapping logistics companies, terminal operators, and technology signals around Zeebrugge.</p>
           <div class="actions">
             <a class="button button--primary" href="../data/companies.csv">Company dataset</a>
-            <a class="button" href="../data/sources.csv">Source register</a>
+            <a class="button" href="../reports/opportunity-playbook.md">Opportunity playbook</a>
+            <a class="button" href="https://github.com/KippieG/zeebrugge-logistics-intel">GitHub repo</a>
           </div>
+          <dl class="hero-facts" aria-label="Project facts">
+            <div>
+              <dt>Snapshot</dt>
+              <dd>2026-06-02</dd>
+            </div>
+            <div>
+              <dt>Region</dt>
+              <dd>Zeebrugge / Port of Antwerp-Bruges</dd>
+            </div>
+            <div>
+              <dt>Evidence model</dt>
+              <dd>Observed, inferred, unknown</dd>
+            </div>
+          </dl>
         </div>
         <div class="port-visual" aria-label="Zeebrugge logistics ecosystem visual">
           <div class="lane lane--auto"><span>Automotive / RoRo</span></div>
@@ -51,17 +69,32 @@
             <span>companies and platforms</span>
           </article>
           <article class="metric">
-            <strong>23</strong>
+            <strong>33</strong>
             <span>public sources registered</span>
           </article>
           <article class="metric">
-            <strong>22</strong>
-            <span>scraped text extracts</span>
+            <strong>9</strong>
+            <span>structured CSV datasets</span>
           </article>
           <article class="metric">
             <strong>5</strong>
             <span>commercial opportunity areas</span>
           </article>
+          <article class="metric">
+            <strong>6</strong>
+            <span>port-logistics technology layers</span>
+          </article>
+          <article class="metric">
+            <strong>18</strong>
+            <span>successful webtech scans</span>
+          </article>
+          <article class="metric">
+            <strong>17</strong>
+            <span>APZI board/segment signals</span>
+          </article>
+        </div>
+        <div class="coverage-note">
+          <p>This is a conservative public-source snapshot. Ecosystem-level stack signals are stronger than company-level vendor disclosure, so inferred labels are intentionally separated from observed facts.</p>
         </div>
       </section>
 
@@ -86,6 +119,100 @@
           <article>
             <h3>Data interoperability</h3>
             <p>Clean APIs and event data are becoming a practical differentiator for shippers and logistics-tech vendors.</p>
+          </article>
+        </div>
+        <div class="tech-strip">
+          <span>Drupal</span>
+          <span>Next.js</span>
+          <span>React</span>
+          <span>WordPress</span>
+          <span>Cloudflare</span>
+          <span>Google Tag Manager</span>
+          <span>Cookiebot</span>
+          <span>OneTrust</span>
+        </div>
+      </section>
+
+      <section class="band" id="matrix">
+        <div class="section-head">
+          <p class="eyebrow">Company stack matrix</p>
+          <h2>Who Needs Which Systems</h2>
+        </div>
+        <div class="matrix" role="table" aria-label="Logistics company technology stack matrix">
+          <div class="matrix__row matrix__row--head" role="row">
+            <div role="columnheader">Segment</div>
+            <div role="columnheader">Examples</div>
+            <div role="columnheader">Likely systems</div>
+            <div role="columnheader">Confidence</div>
+          </div>
+          <div class="matrix__row" role="row">
+            <div role="cell">Port authority and data layer</div>
+            <div role="cell">Port of Antwerp-Bruges, NxtPort / RX-SeaPort</div>
+            <div role="cell">APICS, ZEDIS, IRP, APIs, digital twin, smart cameras</div>
+            <div role="cell"><span class="pill pill--high">High / medium</span></div>
+          </div>
+          <div class="matrix__row" role="row">
+            <div role="cell">Automotive and RoRo terminals</div>
+            <div role="cell">ICO, Wallenius Wilhelmsen, MOSOLF, UECC, C.RO, KESS</div>
+            <div role="cell">TOS, YMS, vehicle inventory, gate OCR, EDI/API, OEM portals</div>
+            <div role="cell"><span class="pill pill--medium">Medium / low</span></div>
+          </div>
+          <div class="matrix__row" role="row">
+            <div role="cell">Container and deepsea terminals</div>
+            <div role="cell">CSP Zeebrugge Terminal, PSA Zeebrugge</div>
+            <div role="cell">Container TOS, crane/OCR options, rail/barge planning, PCS integration</div>
+            <div role="cell"><span class="pill pill--medium">Medium</span></div>
+          </div>
+          <div class="matrix__row" role="row">
+            <div role="cell">Intermodal and warehousing</div>
+            <div role="cell">ECS / 2XL, NDQ Logistics, DFDS, CLdN</div>
+            <div role="cell">TMS, WMS, BI, rail planning, ETA prediction, customs integrations</div>
+            <div role="cell"><span class="pill pill--medium">Medium / low</span></div>
+          </div>
+          <div class="matrix__row" role="row">
+            <div role="cell">Forwarders, customs, agencies</div>
+            <div role="cell">Alltraco, Dens Ocean, RBZ, Herfurth / M-Star, Notman</div>
+            <div role="cell">Customs declaration software, freight TMS, document automation, APICS/ZEDIS workflows</div>
+            <div role="cell"><span class="pill pill--low">Medium / low</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--light" id="taxonomy">
+        <div class="section-head">
+          <p class="eyebrow">Stack taxonomy</p>
+          <h2>The Useful Layers To Track</h2>
+        </div>
+        <div class="taxonomy-grid">
+          <article>
+            <span>01</span>
+            <h3>Port community and data sharing</h3>
+            <p>APICS, ZEDIS, NxtPort, RX-SeaPort, terminal APIs, event exchange, and permissions.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Customs and release</h3>
+            <p>IRP, declarations, document automation, missing-document checks, and release status.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Terminal orchestration</h3>
+            <p>TOS, YMS, gate OCR, camera integrations, vehicle inventory, and crane/OCR options.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Transport and warehouse planning</h3>
+            <p>TMS, WMS, rail planning, slot booking, trailer visibility, and ETA prediction.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Analytics and forecasting</h3>
+            <p>BI, dwell-time models, gate peaks, labor-demand estimates, and exception scoring.</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>Energy terminal operations</h3>
+            <p>SCADA/OT, nominations, scheduling, safety systems, and compliance reporting.</p>
           </article>
         </div>
       </section>
@@ -124,12 +251,66 @@
               <p>Score logistics companies by digital maturity, public tech signals, and likely pain points.</p>
             </div>
           </article>
+          <article>
+            <span>05</span>
+            <div>
+              <h3>API/data readiness audit</h3>
+              <p>Assess which operators can expose clean event data and where integration gaps block shippers.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="band band--light" id="method">
+        <div class="section-head">
+          <p class="eyebrow">Method</p>
+          <h2>How The Signals Were Scored</h2>
+        </div>
+        <div class="method-grid">
+          <article>
+            <h3>Observed</h3>
+            <p>A public source names the system, platform, product, or vendor directly.</p>
+          </article>
+          <article>
+            <h3>Inferred</h3>
+            <p>The stack is operationally likely from terminal, customs, warehouse, RoRo, rail, or forwarding activity, but no vendor is named.</p>
+          </article>
+          <article>
+            <h3>Unknown</h3>
+            <p>No reliable public signal was found. These entries need interviews, job-posting checks, vendor cases, or direct outreach.</p>
+          </article>
+        </div>
+        <div class="workflow">
+          <article>
+            <span>1</span>
+            <p>Register sources in CSV with source type and notes.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <p>Scrape text extracts with a dependency-free Python script.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <p>Map companies to services, stack signals, confidence, and source IDs.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <p>Validate structure locally and in GitHub Actions.</p>
+          </article>
+        </div>
+        <div class="download-strip" aria-label="Repository artifacts">
+          <a href="../data/companies.csv">Companies CSV</a>
+          <a href="../data/stack_taxonomy.csv">Stack taxonomy</a>
+          <a href="../data/opportunities.csv">Opportunities CSV</a>
+          <a href="../data/sources.csv">Source register</a>
+          <a href="../reports/analysis.md">Analysis report</a>
+          <a href="../reports/enrichment-guide.md">Enrichment guide</a>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>Built as a public research prototype. Validate inferred stack data before commercial use.</p>
+      <p>Built as a public research prototype. Validate inferred stack data before commercial use. Source data, scraped extracts, and analysis are included in the repository.</p>
     </footer>
   </body>
 </html>

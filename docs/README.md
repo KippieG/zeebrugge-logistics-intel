@@ -2,9 +2,8 @@
 
 This folder contains the static project page for Zeebrugge Logistics Intel.
 
-To publish it on GitHub:
+The repository includes `.github/workflows/pages.yml`, which publishes this
+folder through GitHub Pages when pushes land on `main`.
 
-1. Open the repository settings.
-2. Go to Pages.
-3. Select `Deploy from a branch`.
-4. Use branch `main` and folder `/docs`.
+If Pages is not active yet, open the repository settings, go to Pages, and set
+the build source to GitHub Actions.

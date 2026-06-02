@@ -10,3 +10,7 @@ Recommended GitHub topics:
 - zeebrugge
 - supply-chain
 - data-analysis
+- maritime
+- terminal-operations
+- customs
+- web-scraping

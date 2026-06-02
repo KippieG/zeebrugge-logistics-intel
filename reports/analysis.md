@@ -27,6 +27,7 @@ Observed ecosystem stack:
 - NxtPort and RX/SeaPort integration for port-community data sharing.
 - IRP for import release/customs digitization across Belgian ports.
 - APICA digital twin, smart cameras and terminal API tooling from Port of Antwerp-Bruges.
+- Lightweight website scan signals: Drupal/Next.js/React on Port of Antwerp-Bruges, WordPress/Vue on NxtPort, Drupal on ECS and PSA Zeebrugge, WordPress on CSP and MOSOLF, React on Fluxys and DFDS, and Next.js/React on CLdN. These are web-channel signals, not proof of operational systems.
 
 Likely company-level needs:
 
@@ -74,8 +75,18 @@ Medium-term:
 
 ## Next research steps
 
-- Pull APZI member list if publicly available or request it directly.
-- Run Wappalyzer/BuiltWith on company domains for web tech signals.
-- Search job postings for each company to identify ERP, TMS, WMS, BI, cloud and cybersecurity vendors.
-- Add Belgian company registry/VAT numbers and financial signals.
-- Add contact roles: operations, IT, customs, terminal planning, commercial.
+Completed in this iteration:
+
+- Added a conservative APZI visible-text extractor. The public members page exposes categories and search UI more reliably than a complete member export, so a direct APZI/Voka export remains the best route for full coverage.
+- Added a lightweight webtech scanner. It produced successful public-domain scans for 19 of 20 seed companies/platforms.
+- Added job-signal enrichment for ECS automated warehouses, CSP IT hiring, Lineas rail planning and broader role categories.
+- Added VAT/registry leads where public source snippets expose them: ECS, ICO, CSP, Fluxys LNG and CLdN/C.RO-related signals.
+- Added contact-role mapping for operations, IT, customs, terminal planning and commercial outreach.
+
+Still worth doing:
+
+- Run manual Wappalyzer/BuiltWith checks and compare them against `data/web_tech_scan.csv`.
+- Verify VAT, enterprise numbers and financials through official KBO/NBB sources before using them commercially.
+- Expand APZI coverage through direct data access or browser/API extraction if the directory exposes a client-side endpoint.
+- Add a job-board scraper with cached search result metadata and dates.
+- Add named outreach contacts only when they are role-relevant and clearly public.
