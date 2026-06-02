@@ -1,0 +1,392 @@
+:root {
+  --ink: #17201c;
+  --muted: #5f6b64;
+  --paper: #f7f6f1;
+  --white: #ffffff;
+  --line: #d8ded7;
+  --green: #1f6f5b;
+  --teal: #1f7f8f;
+  --rust: #b05b35;
+  --steel: #566b7a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.hero {
+  min-height: 92vh;
+  padding: 24px clamp(20px, 5vw, 72px) 56px;
+  background: linear-gradient(180deg, #eef2ed 0%, var(--paper) 100%);
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  margin: 0 auto 72px;
+  max-width: 1180px;
+  font-size: 0.92rem;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--ink);
+}
+
+.hero__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 6.4rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.lead {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 2vw, 1.32rem);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 16px;
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button--primary {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--white);
+}
+
+.port-visual {
+  position: relative;
+  min-height: 460px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(31, 127, 143, 0.2) 0 38%, transparent 38%),
+    repeating-linear-gradient(0deg, rgba(23, 32, 28, 0.06) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgba(23, 32, 28, 0.05) 0 1px, transparent 1px 56px),
+    #eef4f1;
+}
+
+.lane {
+  position: absolute;
+  right: 28px;
+  left: 42%;
+  height: 54px;
+  border-left: 6px solid var(--green);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 26px rgba(23, 32, 28, 0.08);
+}
+
+.lane span {
+  display: block;
+  padding: 15px 16px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.lane--auto {
+  top: 48px;
+  border-color: var(--rust);
+}
+
+.lane--intermodal {
+  top: 132px;
+  border-color: var(--teal);
+}
+
+.lane--terminal {
+  top: 216px;
+  border-color: var(--steel);
+}
+
+.lane--customs {
+  top: 300px;
+  border-color: var(--green);
+}
+
+.dock {
+  position: absolute;
+  left: 9%;
+  width: 29%;
+  height: 38px;
+  border-radius: 4px;
+  background: #6a7772;
+}
+
+.dock--one {
+  top: 146px;
+}
+
+.dock--two {
+  top: 236px;
+}
+
+.vessel {
+  position: absolute;
+  left: 8%;
+  bottom: 58px;
+  width: 30%;
+  height: 72px;
+  border-radius: 6px 6px 28px 28px;
+  background: var(--rust);
+}
+
+.vessel::before {
+  content: "";
+  position: absolute;
+  top: -34px;
+  left: 18%;
+  width: 56%;
+  height: 34px;
+  border-radius: 4px 4px 0 0;
+  background: var(--white);
+}
+
+.crane {
+  position: absolute;
+  width: 72px;
+  height: 118px;
+  border-left: 8px solid var(--green);
+  border-top: 8px solid var(--green);
+}
+
+.crane--one {
+  left: 15%;
+  top: 52px;
+}
+
+.crane--two {
+  left: 26%;
+  top: 164px;
+}
+
+.band {
+  padding: 72px clamp(20px, 5vw, 72px);
+}
+
+.band--light {
+  background: var(--white);
+}
+
+.section-head,
+.metrics,
+.signal-grid,
+.opportunity-list {
+  max-width: 1180px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.section-head {
+  margin-bottom: 32px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric,
+.signal-grid article,
+.opportunity-list article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.metric {
+  padding: 22px;
+}
+
+.metric strong {
+  display: block;
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.metric span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.signal-grid article {
+  padding: 22px;
+}
+
+.signal-grid p,
+.opportunity-list p,
+.footer p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.opportunity-list {
+  display: grid;
+  gap: 12px;
+}
+
+.opportunity-list article {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 22px;
+}
+
+.opportunity-list span {
+  color: var(--rust);
+  font-weight: 900;
+}
+
+.footer {
+  padding: 28px clamp(20px, 5vw, 72px);
+  border-top: 1px solid var(--line);
+  background: var(--white);
+  text-align: center;
+}
+
+@media (max-width: 920px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    margin-bottom: 44px;
+    padding-bottom: 4px;
+  }
+
+  .hero__layout,
+  .metrics,
+  .signal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .port-visual {
+    min-height: 390px;
+  }
+
+  .lane {
+    left: 34%;
+    right: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding-top: 18px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .port-visual {
+    min-height: 360px;
+  }
+
+  .lane {
+    left: 18px;
+    height: 48px;
+  }
+
+  .lane span {
+    padding: 13px 14px;
+    font-size: 0.82rem;
+  }
+
+  .dock,
+  .vessel,
+  .crane {
+    display: none;
+  }
+
+  .opportunity-list article {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+}

@@ -1,37 +1,81 @@
 # Zeebrugge Logistics Intel
 
-Publieke marktintelligentie over logistieke bedrijven, terminal operators en digitale/operationele tech rond Zeebrugge / Port of Antwerp-Bruges.
+Public market-intelligence snapshot of logistics companies, terminal operators, and digital infrastructure around Zeebrugge / Port of Antwerp-Bruges.
 
-Status: eerste desk-research snapshot op 2026-06-02.
+This project combines desk research, source scraping, and structured analysis to map where logistics-tech opportunities are likely to sit: yard visibility, customs digitization, terminal orchestration, intermodal planning, and data interoperability.
 
-## Inhoud
+**Snapshot date:** 2026-06-02  
+**Scope:** Zeebrugge-focused logistics ecosystem, with Port of Antwerp-Bruges context  
+**Status:** Portfolio-ready research prototype, not a complete commercial database
 
-- `data/companies.csv`: seed-lijst van belangrijke spelers met diensten, publieke tech-signalen en inschatting.
-- `data/sources.csv`: gebruikte publieke bronnen.
-- `reports/analysis.md`: analyse, kansen, risico's en vooruitzicht.
-- `scripts/scrape_seed.py`: eenvoudige scraper voor seed-URLs zonder externe Python dependencies.
+## Project Outputs
 
-## Gebruik
+- [Portfolio page](docs/index.html): static GitHub Pages-ready project overview.
+- [Company dataset](data/companies.csv): 20 seed companies/platforms with service categories and public tech-stack signals.
+- [Source register](data/sources.csv): 23 public sources used for the first snapshot.
+- [Scraped extracts](data/scraped): text extracts generated from the source register.
+- [Analysis report](reports/analysis.md): market map, technology signals, opportunities, and 2026 outlook.
+- [Scraper](scripts/scrape_seed.py): dependency-free Python scraper for the seed URLs.
+
+## Why This Is Useful
+
+Zeebrugge is a specialized logistics gateway with strong activity in:
+
+- Automotive and RoRo logistics
+- UK/Ireland shortsea and intermodal flows
+- Container and paper logistics
+- LNG and energy logistics
+- Customs, forwarding, and shipping agency workflows
+
+The most visible technology layer is ecosystem-level rather than company-level: APICS, ZEDIS, NxtPort/RX-SeaPort, IRP, APICA digital twin, smart cameras, and terminal APIs. Company-level stacks are often inferred from operations unless vendors are publicly named.
+
+## Repository Structure
+
+```text
+.
+├── data/
+│   ├── companies.csv
+│   ├── sources.csv
+│   └── scraped/
+├── docs/
+│   ├── index.html
+│   └── styles.css
+├── reports/
+│   └── analysis.md
+└── scripts/
+    └── scrape_seed.py
+```
+
+## Run The Scraper
 
 ```sh
 python3 scripts/scrape_seed.py
 ```
 
-De scraper schrijft ruwe tekstextracten naar `data/scraped/`. Gebruik die output om de CSV verder aan te vullen of om sales/marktanalyses te maken.
+Latest scrape result:
 
-Laatste scrape-resultaat:
+- 23 seed sources attempted.
+- 22 sources produced text extracts.
+- 1 temporary failure: Notman Logistics returned HTTP 503.
+- APZI confirms roughly 160 Zeebrugge port companies, but its public member page exposes mostly categories/search UI to this simple HTML scraper. A complete member export needs browser/API scraping or direct APZI data.
 
-- 23 seed-bronnen geprobeerd.
-- 22 bronnen met tekstextract.
-- 1 tijdelijke failure: Notman Logistics gaf HTTP 503.
-- APZI bevestigt circa 160 Zeebrugse havenbedrijven, maar de publieke ledenpagina geeft in deze eenvoudige HTML-scrape vooral categorieën/zoekinterface. Voor een volledige ledenlijst is een browser/API-scrape of directe APZI-export nodig.
+## Methodology
 
-## Belangrijke beperking
+Tech-stack labels are deliberately conservative:
 
-Tech stacks van logistieke bedrijven zijn zelden volledig publiek. Dit project maakt daarom onderscheid tussen:
+- `observed`: explicitly mentioned in public sources, for example NxtPort, APICS, ZEDIS, IRP, Microsoft Analytics.
+- `inferred`: operationally likely from services such as terminal operations, customs, warehousing, intermodal planning, or track-and-trace.
+- `unknown`: no reliable public signal found.
 
-- `observed`: expliciet publiek genoemd, bijvoorbeeld NxtPort, APICS, ZEDIS, IRP, Zscaler, Microsoft Analytics.
-- `inferred`: logisch afgeleid uit diensten zoals customs, terminal operations, warehousing, intermodal planning of track-and-trace.
-- `unknown`: geen betrouwbaar publiek signaal gevonden.
+For investment, sales, or partnership decisions, validate inferred tech stacks with job postings, vendor case studies, Wappalyzer/BuiltWith, procurement data, company interviews, or direct outreach.
 
-Voor commerciële beslissingen moeten inferred tech stacks worden gevalideerd via vacatures, klantcases, Wappalyzer/BuiltWith, aanbestedingen, vendor-case studies of directe interviews.
+## Portfolio Angle
+
+This repo demonstrates:
+
+- Market research from public sources
+- Structured CSV data modeling
+- Lightweight scraping without dependencies
+- Logistics-domain analysis
+- Clear separation between observed facts and inferred signals
+- A static data-story page suitable for GitHub Pages

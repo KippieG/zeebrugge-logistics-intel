@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zeebrugge Logistics Intel</title>
+    <meta name="description" content="Public market-intelligence snapshot of Zeebrugge logistics companies, terminal operators, and logistics technology signals.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav" aria-label="Project navigation">
+        <a href="#dataset">Dataset</a>
+        <a href="#signals">Signals</a>
+        <a href="#opportunities">Opportunities</a>
+        <a href="../reports/analysis.md">Report</a>
+      </nav>
+      <div class="hero__layout">
+        <div class="hero__copy">
+          <p class="eyebrow">Port of Antwerp-Bruges research snapshot</p>
+          <h1>Zeebrugge Logistics Intel</h1>
+          <p class="lead">A structured public-data project mapping logistics companies, terminal operators, and technology signals around Zeebrugge.</p>
+          <div class="actions">
+            <a class="button button--primary" href="../data/companies.csv">Company dataset</a>
+            <a class="button" href="../data/sources.csv">Source register</a>
+          </div>
+        </div>
+        <div class="port-visual" aria-label="Zeebrugge logistics ecosystem visual">
+          <div class="lane lane--auto"><span>Automotive / RoRo</span></div>
+          <div class="lane lane--intermodal"><span>UK-Ireland intermodal</span></div>
+          <div class="lane lane--terminal"><span>Container terminals</span></div>
+          <div class="lane lane--customs"><span>Customs data layer</span></div>
+          <div class="dock dock--one"></div>
+          <div class="dock dock--two"></div>
+          <div class="vessel"></div>
+          <div class="crane crane--one"></div>
+          <div class="crane crane--two"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="band" id="dataset">
+        <div class="section-head">
+          <p class="eyebrow">Dataset</p>
+          <h2>Research Coverage</h2>
+        </div>
+        <div class="metrics" aria-label="Dataset metrics">
+          <article class="metric">
+            <strong>20</strong>
+            <span>companies and platforms</span>
+          </article>
+          <article class="metric">
+            <strong>23</strong>
+            <span>public sources registered</span>
+          </article>
+          <article class="metric">
+            <strong>22</strong>
+            <span>scraped text extracts</span>
+          </article>
+          <article class="metric">
+            <strong>5</strong>
+            <span>commercial opportunity areas</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="band band--light" id="signals">
+        <div class="section-head">
+          <p class="eyebrow">Technology signals</p>
+          <h2>Where The Digital Layer Is Visible</h2>
+        </div>
+        <div class="signal-grid">
+          <article>
+            <h3>Port community systems</h3>
+            <p>APICS, ZEDIS, NxtPort/RX-SeaPort, and IRP are the strongest observed ecosystem signals.</p>
+          </article>
+          <article>
+            <h3>Terminal operations</h3>
+            <p>Automotive, RoRo, and container operators likely depend on TOS, YMS, gate systems, EDI, and customer visibility.</p>
+          </article>
+          <article>
+            <h3>Intermodal logistics</h3>
+            <p>UK/Ireland flows create recurring needs around customs, rail planning, trailer visibility, and warehouse coordination.</p>
+          </article>
+          <article>
+            <h3>Data interoperability</h3>
+            <p>Clean APIs and event data are becoming a practical differentiator for shippers and logistics-tech vendors.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band" id="opportunities">
+        <div class="section-head">
+          <p class="eyebrow">Commercial read</p>
+          <h2>Opportunity Map</h2>
+        </div>
+        <div class="opportunity-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Yard visibility</h3>
+              <p>Track dwell time, location, release status, and handover state for vehicles, trailers, and overflow capacity.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Customs automation</h3>
+              <p>Build around IRP/NxtPort/RX-SeaPort instead of isolated document portals.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>ETA and capacity forecasting</h3>
+              <p>Connect vessel schedules, terminal events, gate peaks, and warehouse labor planning.</p>
+            </div>
+          </article>
+          <article>
+            <span>04</span>
+            <div>
+              <h3>Sales intelligence</h3>
+              <p>Score logistics companies by digital maturity, public tech signals, and likely pain points.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built as a public research prototype. Validate inferred stack data before commercial use.</p>
+    </footer>
+  </body>
+</html>
