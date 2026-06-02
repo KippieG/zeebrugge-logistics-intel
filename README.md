@@ -43,7 +43,7 @@ This repo maps that ecosystem from public sources and turns it into:
 - 20 seed companies and platforms
 - 33 registered public sources
 - 33 scraped text extracts
-- 9 structured CSV datasets
+- 10 structured CSV datasets
 - 6 port-logistics technology layers
 - 5 commercial software opportunity areas
 - validation scripts, CI checks and Playwright visual smoke tests
@@ -57,7 +57,7 @@ This project is built to show end-to-end ownership, not only research.
 | Capability | What the repo proves |
 | --- | --- |
 | Market research | Finds useful signals in port, terminal, APZI, company, job, registry and platform sources. |
-| Data engineering | Normalizes findings into CSV datasets with source IDs, confidence labels and validation rules. |
+| Data engineering | Normalizes findings into CSV datasets with source IDs, confidence labels, company stack rows and validation rules. |
 | Scraping | Captures text extracts from seed URLs and keeps scraped evidence available for review. |
 | Tech-stack analysis | Separates observed platform signals from inferred operational systems such as TOS, YMS, WMS, TMS, EDI and APIs. |
 | Commercial thinking | Converts findings into buyer segments, pain signals, product angles and go-to-market notes. |
@@ -130,6 +130,7 @@ Public APZI pages confirm a broader Zeebrugge port-company ecosystem and expose 
 | APZI board/segment signals | 17 | [`data/apzi_board_signals.csv`](data/apzi_board_signals.csv) |
 | APZI public-page candidates | 22 | [`data/apzi_member_candidates.csv`](data/apzi_member_candidates.csv) |
 | Webtech scan rows | 20 | [`data/web_tech_scan.csv`](data/web_tech_scan.csv) |
+| Company-by-company stack rows | 20 | [`data/company_stack_signals.csv`](data/company_stack_signals.csv) |
 
 ## What Was Scraped And Modeled
 
@@ -156,6 +157,33 @@ The company dataset maps operators into practical segments:
 | Intermodal and warehousing | ECS / 2XL, NDQ Logistics, DFDS, CLdN | TMS, WMS, BI, rail planning, customs integration, ETA prediction |
 | Forwarders, customs and agencies | Alltraco, Dens Ocean, RBZ, Herfurth / M-Star, Notman | Customs declaration software, freight TMS, document automation, APICS/ZEDIS workflows |
 | Energy logistics | Fluxys LNG Terminal Zeebrugge | SCADA/OT, nominations, scheduling, safety systems, compliance reporting |
+
+## Company Tech Stack Signals
+
+This section is the practical per-company view: what is observed, what is inferred from the operating model, what the latest webtech scan found, and which hiring/job snippets reveal operational or IT priorities.
+
+| Company | Observed / public stack signal | Inferred operational stack | Webtech / vacancy signal |
+| --- | --- | --- | --- |
+| Port of Antwerp-Bruges | APICS, ZEDIS, ETA Terminal Tool, Terminal API, APICA digital twin, smart cameras, NxtPort, IRP ecosystem | Port-community APIs, digital twin operations, event data sharing | Cloudflare, Drupal, Next.js, React, GTM, GA, Bootstrap; digital-port roles to research |
+| NxtPort / RX-SeaPort | NxtPort, RX-SeaPort, IRP, customs coordination | API/event platform, identity and permissions, partner connectors | WordPress, Vue; API/product/data/customs integration roles to research |
+| ECS / 2XL | Microsoft Analytics, Reporting Services | TMS, WMS, BI, rail planning, customer portals, customs integrations | Cloudflare, Drupal, GTM, GA; job signal around automated warehouses, automation engineers, information systems and digitization |
+| NDQ Logistics | No named operational vendor | WMS, TMS, customs tooling, ferry integrations, customer visibility | WordPress, GTM, GA, Cookiebot, jQuery; Brexit/customs/planner/warehouse roles to research |
+| International Car Operators | Customs/fiscal representation, digitalization and innovation signal | TOS, YMS, VMS, vehicle inventory, EDI/API, gate/camera systems, OEM portals | Drupal, GTM; terminal planning, IT, vehicle processing, customs and operations roles to research |
+| Wallenius Wilhelmsen Zeebrugge | No specific Zeebrugge vendor in seed sources | Automotive terminal systems, global shipping EDI, customer visibility, yard management | GTM, Cookiebot; APZI cargo-handler board signal |
+| MOSOLF Carcenter Zeebrugge | No named operational vendor | Vehicle inventory, VMS/YMS, damage inspection, OEM/customer portals, transport planning | WordPress, jQuery; PDI, yard, operations, IT and customer service roles to research |
+| PSA Zeebrugge | No named operational vendor in seed source | TOS, EDI, rail/barge planning, yard/gate integrations, PCS integration | Cloudflare, Drupal, GTM, GA; terminal planning, gate, operations and IT roles to research |
+| CSP Zeebrugge Terminal | ZPMC cranes, VBS web app, TOS-connected internal apps, datawarehouse, BI tools, Java, JavaScript, Groovy, Python, CSS, HTML, SQL Oracle, Git | Container TOS, crane/OCR options, EDI/API, PCS integrations, terminal planning | WordPress, GTM, GA, jQuery; IT Analyst Developer job mentions TOS, datawarehouse and BI tools |
+| Fluxys LNG Terminal Zeebrugge | No named operational vendor in seed sources | SCADA/OT, nominations, scheduling, safety systems, compliance reporting, cybersecurity | React, GTM, GA, OneTrust, Bootstrap; OT/process control/HSE/cybersecurity roles to research |
+| Alltraco | AEO/customs capability | Customs declaration software, forwarding TMS, document management, customer communication tools | GTM, Bootstrap; customs declarant, freight forwarder and operations roles to research |
+| Notman Logistics | No named operational vendor | Fleet planning, telematics, basic WMS, invoicing/accounting | Web scan failed with HTTP 503; planner, dispatcher, warehouse and fleet roles to research |
+| Dens Ocean Shipping & Logistics | No named operational vendor | Forwarding TMS, shipping schedules, documentation, customs integrations | No visible webtech signal found; shipping/forwarding/customer-service roles to research |
+| RBZ | No named operational vendor | Vessel agency software, port-call workflows, APICS/ZEDIS interaction, documentation systems | Cloudflare, GTM, jQuery; shipping agent, vessel operations and documentation roles to research |
+| Herfurth Logistics / M-Star Freight | No named operational vendor | Forwarding TMS, customs tooling, carrier EDI, customer portal | Vue, GTM, GA, jQuery; freight forwarder, customs, IT and EDI roles to research |
+| DFDS | No named Zeebrugge vendor in seed sources | Booking systems, EDI/API, trailer planning, driverless freight planning, customs workflows | React, GTM; ferry operations, planning, customs and IT roles around Zeebrugge to research |
+| CLdN | No named operational vendor in seed sources | Booking, RoRo terminal planning, EDI/API, Brexit/customs workflows | Next.js, React, GTM, GA, Cookiebot, OneTrust; ISPS/VAT signal and terminal planning/customs roles to research |
+| C.RO Ports / C.RO Terminal | No named operational vendor in seed sources | RoRo TOS/YMS, gate OCR, EDI/API, customer integrations | Next.js, React, GTM, GA, Cookiebot, OneTrust; terminal planning, gate operations and IT roles to research |
+| UECC | Public site mentions advanced digital solutions | Automotive terminal software, voyage/vehicle visibility, EDI/API with OEMs and ports | Cloudflare, WordPress, GTM; operations, digital/customer visibility and terminal coordination roles to research |
+| KESS | No named operational vendor in seed sources | Shipping operations, automotive EDI, route planning, customer visibility | Bootstrap, Go Daddy Website Builder; shipping operations, planner and customer service roles to research |
 
 ## Complete Tech Stack Tag View
 
@@ -202,6 +230,8 @@ Live page: https://kippieg.github.io/zeebrugge-logistics-intel/
 ![Dashboard hero screenshot](docs/assets/dashboard-hero-screenshot.png)
 
 ![Full tech-stack tag screenshot](docs/assets/dashboard-stack-tags-screenshot.png)
+
+![Company tech-stack signal screenshot](docs/assets/dashboard-company-stacks-screenshot.png)
 
 ![Company stack matrix screenshot](docs/assets/dashboard-stack-matrix-screenshot.png)
 

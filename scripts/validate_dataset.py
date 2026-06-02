@@ -23,6 +23,7 @@ APZI_BOARD_SIGNALS = ROOT / "data" / "apzi_board_signals.csv"
 RESEARCH_BACKLOG = ROOT / "data" / "research_backlog.csv"
 APZI_MEMBER_CANDIDATES = ROOT / "data" / "apzi_member_candidates.csv"
 WEB_TECH_SCAN = ROOT / "data" / "web_tech_scan.csv"
+COMPANY_STACK_SIGNALS = ROOT / "data" / "company_stack_signals.csv"
 
 COMPANY_FIELDS = {
     "company",
@@ -60,6 +61,16 @@ APZI_BOARD_FIELDS = {"segment", "person", "organization", "role_signal", "tech_r
 BACKLOG_FIELDS = {"workstream", "task", "why_it_matters", "method", "status"}
 APZI_MEMBER_FIELDS = {"source_url", "candidate_text", "matched_terms", "status"}
 WEB_TECH_FIELDS = {"company", "domain", "status", "signals", "error"}
+COMPANY_STACK_FIELDS = {
+    "company",
+    "segment",
+    "observed_stack_tags",
+    "inferred_stack_tags",
+    "visible_web_tags",
+    "job_or_hiring_signal",
+    "confidence",
+    "source_ids",
+}
 CONFIDENCE_VALUES = {"high", "medium", "low"}
 PRIORITY_VALUES = {"high", "medium", "low"}
 
@@ -88,6 +99,7 @@ def main() -> int:
     backlog = read_csv(RESEARCH_BACKLOG)
     apzi_member_candidates = read_csv(APZI_MEMBER_CANDIDATES)
     web_tech_scan = read_csv(WEB_TECH_SCAN)
+    company_stack_signals = read_csv(COMPANY_STACK_SIGNALS)
 
     company_fields = set(companies[0].keys()) if companies else set()
     source_fields = set(sources[0].keys()) if sources else set()
@@ -98,6 +110,7 @@ def main() -> int:
     backlog_fields = set(backlog[0].keys()) if backlog else set()
     apzi_member_fields = set(apzi_member_candidates[0].keys()) if apzi_member_candidates else set()
     web_tech_fields = set(web_tech_scan[0].keys()) if web_tech_scan else set()
+    company_stack_fields = set(company_stack_signals[0].keys()) if company_stack_signals else set()
 
     if company_fields != COMPANY_FIELDS:
         fail(f"companies.csv fields mismatch: {sorted(company_fields)}", failures)
@@ -117,6 +130,8 @@ def main() -> int:
         fail(f"apzi_member_candidates.csv fields mismatch: {sorted(apzi_member_fields)}", failures)
     if web_tech_fields != WEB_TECH_FIELDS:
         fail(f"web_tech_scan.csv fields mismatch: {sorted(web_tech_fields)}", failures)
+    if company_stack_fields != COMPANY_STACK_FIELDS:
+        fail(f"company_stack_signals.csv fields mismatch: {sorted(company_stack_fields)}", failures)
 
     source_ids = {row["id"] for row in sources}
     if len(source_ids) != len(sources):
@@ -172,6 +187,31 @@ def main() -> int:
         if row["company"] not in company_set:
             fail(f"web_tech_scan.csv contains unknown company '{row['company']}'", failures)
 
+    stack_signal_companies = [row["company"] for row in company_stack_signals]
+    if len(set(stack_signal_companies)) != len(stack_signal_companies):
+        fail("company_stack_signals.csv contains duplicate company names", failures)
+    missing_stack_signal_companies = sorted(company_set - set(stack_signal_companies))
+    if missing_stack_signal_companies:
+        fail(
+            "company_stack_signals.csv missing companies: "
+            f"{', '.join(missing_stack_signal_companies)}",
+            failures,
+        )
+    for row in company_stack_signals:
+        if row["company"] not in company_set:
+            fail(f"company_stack_signals.csv contains unknown company '{row['company']}'", failures)
+        if row["confidence"] not in CONFIDENCE_VALUES:
+            fail(
+                f"{row['company']} stack signal: invalid confidence '{row['confidence']}'",
+                failures,
+            )
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        if not refs:
+            fail(f"{row['company']} stack signal: no source references", failures)
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['company']} stack signal: unknown source reference '{ref}'", failures)
+
     scraped_files = list(SCRAPED.glob("S*.txt"))
     scraped_ids = {path.name.split("_", 1)[0] for path in scraped_files}
     missing_extracts = sorted(source_ids - scraped_ids)
@@ -190,6 +230,7 @@ def main() -> int:
         f"{len(stack_layers)} stack layers, {len(opportunities)} opportunities, "
         f"{len(enrichment)} enrichment rows, {len(apzi_board)} APZI board signals, "
         f"{len(apzi_member_candidates)} APZI page candidates, {len(web_tech_scan)} web tech rows, "
+        f"{len(company_stack_signals)} company stack rows, "
         f"{len(scraped_files)} scraped extracts."
     )
     return 0

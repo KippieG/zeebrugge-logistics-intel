@@ -13,7 +13,7 @@ Alltraco,alltraco.com,ok,Google Tag Manager;Bootstrap,
 Notman Logistics,notmanlogistics.be,failed,,HTTP Error 503: Service Temporarily Unavailable
 Dens Ocean Shipping & Logistics,densocean.net,ok,,
 RBZ,rbz.be,ok,Cloudflare;Google Tag Manager;jQuery,
-Herfurth Logistics / M-Star Freight,herfurth-logistics.com,ok,Google Tag Manager;Google Analytics;jQuery,
+Herfurth Logistics / M-Star Freight,herfurth-logistics.com,ok,Vue;Google Tag Manager;Google Analytics;jQuery,
 DFDS,dfds.com,ok,React;Google Tag Manager,
 CLdN,cldn.com,ok,Next.js;React;Google Tag Manager;Google Analytics;Cookiebot;OneTrust,
 C.RO Ports / C.RO Terminal,cldn.com,ok,Next.js;React;Google Tag Manager;Google Analytics;Cookiebot;OneTrust,
