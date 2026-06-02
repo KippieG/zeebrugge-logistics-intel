@@ -24,6 +24,8 @@ RESEARCH_BACKLOG = ROOT / "data" / "research_backlog.csv"
 APZI_MEMBER_CANDIDATES = ROOT / "data" / "apzi_member_candidates.csv"
 WEB_TECH_SCAN = ROOT / "data" / "web_tech_scan.csv"
 COMPANY_STACK_SIGNALS = ROOT / "data" / "company_stack_signals.csv"
+FIRECRAWL_TARGETS = ROOT / "data" / "firecrawl_targets.csv"
+FIRECRAWL_EVIDENCE = ROOT / "data" / "firecrawl_evidence.csv"
 
 COMPANY_FIELDS = {
     "company",
@@ -71,8 +73,31 @@ COMPANY_STACK_FIELDS = {
     "confidence",
     "source_ids",
 }
+FIRECRAWL_TARGET_FIELDS = {
+    "id",
+    "label",
+    "url",
+    "mode",
+    "scope",
+    "limit",
+    "max_depth",
+    "why_it_matters",
+    "source_ids",
+}
+FIRECRAWL_EVIDENCE_FIELDS = {
+    "id",
+    "firecrawl_action",
+    "query_or_target",
+    "result_url",
+    "evidence_summary",
+    "commercial_signal",
+    "source_ids",
+    "status",
+}
 CONFIDENCE_VALUES = {"high", "medium", "low"}
 PRIORITY_VALUES = {"high", "medium", "low"}
+FIRECRAWL_MODES = {"scrape", "crawl"}
+FIRECRAWL_STATUSES = {"successful", "attempted", "planned"}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -100,6 +125,8 @@ def main() -> int:
     apzi_member_candidates = read_csv(APZI_MEMBER_CANDIDATES)
     web_tech_scan = read_csv(WEB_TECH_SCAN)
     company_stack_signals = read_csv(COMPANY_STACK_SIGNALS)
+    firecrawl_targets = read_csv(FIRECRAWL_TARGETS)
+    firecrawl_evidence = read_csv(FIRECRAWL_EVIDENCE)
 
     company_fields = set(companies[0].keys()) if companies else set()
     source_fields = set(sources[0].keys()) if sources else set()
@@ -111,6 +138,8 @@ def main() -> int:
     apzi_member_fields = set(apzi_member_candidates[0].keys()) if apzi_member_candidates else set()
     web_tech_fields = set(web_tech_scan[0].keys()) if web_tech_scan else set()
     company_stack_fields = set(company_stack_signals[0].keys()) if company_stack_signals else set()
+    firecrawl_target_fields = set(firecrawl_targets[0].keys()) if firecrawl_targets else set()
+    firecrawl_evidence_fields = set(firecrawl_evidence[0].keys()) if firecrawl_evidence else set()
 
     if company_fields != COMPANY_FIELDS:
         fail(f"companies.csv fields mismatch: {sorted(company_fields)}", failures)
@@ -132,6 +161,10 @@ def main() -> int:
         fail(f"web_tech_scan.csv fields mismatch: {sorted(web_tech_fields)}", failures)
     if company_stack_fields != COMPANY_STACK_FIELDS:
         fail(f"company_stack_signals.csv fields mismatch: {sorted(company_stack_fields)}", failures)
+    if firecrawl_target_fields != FIRECRAWL_TARGET_FIELDS:
+        fail(f"firecrawl_targets.csv fields mismatch: {sorted(firecrawl_target_fields)}", failures)
+    if firecrawl_evidence_fields != FIRECRAWL_EVIDENCE_FIELDS:
+        fail(f"firecrawl_evidence.csv fields mismatch: {sorted(firecrawl_evidence_fields)}", failures)
 
     source_ids = {row["id"] for row in sources}
     if len(source_ids) != len(sources):
@@ -212,6 +245,31 @@ def main() -> int:
             if ref not in source_ids:
                 fail(f"{row['company']} stack signal: unknown source reference '{ref}'", failures)
 
+    firecrawl_target_ids = [row["id"] for row in firecrawl_targets]
+    if len(set(firecrawl_target_ids)) != len(firecrawl_target_ids):
+        fail("firecrawl_targets.csv contains duplicate ids", failures)
+    for row in firecrawl_targets:
+        if row["mode"] not in FIRECRAWL_MODES:
+            fail(f"{row['id']}: invalid Firecrawl mode '{row['mode']}'", failures)
+        for field in ("limit", "max_depth"):
+            if not row[field].isdigit():
+                fail(f"{row['id']}: {field} is not numeric", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['id']} Firecrawl target: unknown source reference '{ref}'", failures)
+
+    firecrawl_evidence_ids = [row["id"] for row in firecrawl_evidence]
+    if len(set(firecrawl_evidence_ids)) != len(firecrawl_evidence_ids):
+        fail("firecrawl_evidence.csv contains duplicate ids", failures)
+    for row in firecrawl_evidence:
+        if row["status"] not in FIRECRAWL_STATUSES:
+            fail(f"{row['id']}: invalid Firecrawl evidence status '{row['status']}'", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['id']} Firecrawl evidence: unknown source reference '{ref}'", failures)
+
     scraped_files = list(SCRAPED.glob("S*.txt"))
     scraped_ids = {path.name.split("_", 1)[0] for path in scraped_files}
     missing_extracts = sorted(source_ids - scraped_ids)
@@ -231,6 +289,7 @@ def main() -> int:
         f"{len(enrichment)} enrichment rows, {len(apzi_board)} APZI board signals, "
         f"{len(apzi_member_candidates)} APZI page candidates, {len(web_tech_scan)} web tech rows, "
         f"{len(company_stack_signals)} company stack rows, "
+        f"{len(firecrawl_targets)} Firecrawl targets, {len(firecrawl_evidence)} Firecrawl evidence rows, "
         f"{len(scraped_files)} scraped extracts."
     )
     return 0

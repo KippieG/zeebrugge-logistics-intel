@@ -8,7 +8,7 @@ An executive-ready intelligence repo that turns public Zeebrugge port-logistics 
 ![Zeebrugge Port Tech Intelligence dashboard hero](docs/assets/zeebrugge-intelligence-hero.png)
 
 **Live dashboard:** https://kippieg.github.io/zeebrugge-logistics-intel/  
-**Snapshot date:** 2026-06-02  
+**Snapshot date:** 2026-06-03  
 **Scope:** Zeebrugge-focused logistics ecosystem, with Port of Antwerp-Bruges context  
 **What this is:** market intelligence, data modeling, source scraping, tech-stack inference and commercial opportunity mapping in one portfolio project
 
@@ -29,8 +29,8 @@ An executive-ready intelligence repo that turns public Zeebrugge port-logistics 
 
 ## What I Built
 
-- Collected, registered and scraped **33 public sources** into reviewable source extracts.
-- Modeled **9 structured datasets** with source IDs, confidence labels and automated validation.
+- Expanded the evidence base to **42 public sources**, including Firecrawl-discovered port, route, vacancy and terminal-operation pages.
+- Modeled **12 structured datasets** with source IDs, confidence labels, Firecrawl targets and automated validation.
 - Translated public signals into **5 commercial software opportunities** for logistics-tech buyers.
 
 ## The Short Version
@@ -41,9 +41,11 @@ This repo maps that ecosystem from public sources and turns it into:
 
 - a polished GitHub Pages intelligence dashboard
 - 20 seed companies and platforms
-- 33 registered public sources
-- 33 scraped text extracts
-- 10 structured CSV datasets
+- 42 registered public sources
+- 42 scraped text extracts
+- 12 structured CSV datasets
+- 10 Firecrawl-ready crawl/scrape targets
+- 8 Firecrawl evidence rows from successful search+scrape runs
 - 6 port-logistics technology layers
 - 5 commercial software opportunity areas
 - validation scripts, CI checks and Playwright visual smoke tests
@@ -58,7 +60,7 @@ This project is built to show end-to-end ownership, not only research.
 | --- | --- |
 | Market research | Finds useful signals in port, terminal, APZI, company, job, registry and platform sources. |
 | Data engineering | Normalizes findings into CSV datasets with source IDs, confidence labels, company stack rows and validation rules. |
-| Scraping | Captures text extracts from seed URLs and keeps scraped evidence available for review. |
+| Scraping | Captures text extracts from seed URLs, records Firecrawl evidence and keeps scraped outputs available for review. |
 | Tech-stack analysis | Separates observed platform signals from inferred operational systems such as TOS, YMS, WMS, TMS, EDI and APIs. |
 | Commercial thinking | Converts findings into buyer segments, pain signals, product angles and go-to-market notes. |
 | Delivery quality | Ships a dashboard, README, reports, scripts, CI validation and visual smoke tests. |
@@ -122,8 +124,8 @@ Public APZI pages confirm a broader Zeebrugge port-company ecosystem and expose 
 | Area | Count | File |
 | --- | ---: | --- |
 | Seed companies and platforms | 20 | [`data/companies.csv`](data/companies.csv) |
-| Public source register | 33 | [`data/sources.csv`](data/sources.csv) |
-| Scraped source extracts | 33 | [`data/scraped/`](data/scraped) |
+| Public source register | 42 | [`data/sources.csv`](data/sources.csv) |
+| Scraped source extracts | 42 | [`data/scraped/`](data/scraped) |
 | Port-logistics stack layers | 6 | [`data/stack_taxonomy.csv`](data/stack_taxonomy.csv) |
 | Product opportunities | 5 | [`data/opportunities.csv`](data/opportunities.csv) |
 | Company enrichment rows | 20 | [`data/company_enrichment.csv`](data/company_enrichment.csv) |
@@ -131,6 +133,8 @@ Public APZI pages confirm a broader Zeebrugge port-company ecosystem and expose 
 | APZI public-page candidates | 22 | [`data/apzi_member_candidates.csv`](data/apzi_member_candidates.csv) |
 | Webtech scan rows | 20 | [`data/web_tech_scan.csv`](data/web_tech_scan.csv) |
 | Company-by-company stack rows | 20 | [`data/company_stack_signals.csv`](data/company_stack_signals.csv) |
+| Firecrawl scrape/crawl targets | 10 | [`data/firecrawl_targets.csv`](data/firecrawl_targets.csv) |
+| Firecrawl evidence rows | 8 | [`data/firecrawl_evidence.csv`](data/firecrawl_evidence.csv) |
 
 ## What Was Scraped And Modeled
 
@@ -141,6 +145,7 @@ The source register and scraper focus on public evidence that can support busine
 - RoRo, deepsea, container, customs, forwarding and warehousing company pages
 - APZI public pages and board/member signals
 - company contact, VAT/registry and hiring signals where public snippets expose them
+- Firecrawl-discovered ETA Terminal Tool, IRP, Maritime Logistics Zone, ECS vacancy, UECC terminal and RoRo route-network pages
 - webtech headers, generators, scripts and visible website metadata
 
 Scraped extracts are stored in [`data/scraped/`](data/scraped), so the dataset is reviewable instead of being a black box.
@@ -166,7 +171,7 @@ This section is the practical per-company view: what is observed, what is inferr
 | --- | --- | --- | --- |
 | Port of Antwerp-Bruges | APICS, ZEDIS, ETA Terminal Tool, Terminal API, APICA digital twin, smart cameras, NxtPort, IRP ecosystem | Port-community APIs, digital twin operations, event data sharing | Cloudflare, Drupal, Next.js, React, GTM, GA, Bootstrap; digital-port roles to research |
 | NxtPort / RX-SeaPort | NxtPort, RX-SeaPort, IRP, customs coordination | API/event platform, identity and permissions, partner connectors | WordPress, Vue; API/product/data/customs integration roles to research |
-| ECS / 2XL | Microsoft Analytics, Reporting Services | TMS, WMS, BI, rail planning, customer portals, customs integrations | Cloudflare, Drupal, GTM, GA; job signal around automated warehouses, automation engineers, information systems and digitization |
+| ECS / 2XL | Microsoft Analytics, Reporting Services, in-house apps, customer/supplier interfaces, .NET, Angular, C#, MS SQL Server, Azure, Docker, Kubernetes | TMS, WMS, BI, rail planning, customer portals, customs integrations | Official software vacancy confirms a modern Microsoft/cloud engineering stack plus event-driven and domain-driven architecture signals |
 | NDQ Logistics | No named operational vendor | WMS, TMS, customs tooling, ferry integrations, customer visibility | WordPress, GTM, GA, Cookiebot, jQuery; Brexit/customs/planner/warehouse roles to research |
 | International Car Operators | Customs/fiscal representation, digitalization and innovation signal | TOS, YMS, VMS, vehicle inventory, EDI/API, gate/camera systems, OEM portals | Drupal, GTM; terminal planning, IT, vehicle processing, customs and operations roles to research |
 | Wallenius Wilhelmsen Zeebrugge | No specific Zeebrugge vendor in seed sources | Automotive terminal systems, global shipping EDI, customer visibility, yard management | GTM, Cookiebot; APZI cargo-handler board signal |
@@ -179,11 +184,23 @@ This section is the practical per-company view: what is observed, what is inferr
 | Dens Ocean Shipping & Logistics | No named operational vendor | Forwarding TMS, shipping schedules, documentation, customs integrations | No visible webtech signal found; shipping/forwarding/customer-service roles to research |
 | RBZ | No named operational vendor | Vessel agency software, port-call workflows, APICS/ZEDIS interaction, documentation systems | Cloudflare, GTM, jQuery; shipping agent, vessel operations and documentation roles to research |
 | Herfurth Logistics / M-Star Freight | No named operational vendor | Forwarding TMS, customs tooling, carrier EDI, customer portal | Vue, GTM, GA, jQuery; freight forwarder, customs, IT and EDI roles to research |
-| DFDS | No named Zeebrugge vendor in seed sources | Booking systems, EDI/API, trailer planning, driverless freight planning, customs workflows | React, GTM; ferry operations, planning, customs and IT roles around Zeebrugge to research |
-| CLdN | No named operational vendor in seed sources | Booking, RoRo terminal planning, EDI/API, Brexit/customs workflows | Next.js, React, GTM, GA, Cookiebot, OneTrust; ISPS/VAT signal and terminal planning/customs roles to research |
-| C.RO Ports / C.RO Terminal | No named operational vendor in seed sources | RoRo TOS/YMS, gate OCR, EDI/API, customer integrations | Next.js, React, GTM, GA, Cookiebot, OneTrust; terminal planning, gate operations and IT roles to research |
-| UECC | Public site mentions advanced digital solutions | Automotive terminal software, voyage/vehicle visibility, EDI/API with OEMs and ports | Cloudflare, WordPress, GTM; operations, digital/customer visibility and terminal coordination roles to research |
+| DFDS | Zeebrugge freight route evidence, no named operational vendor | Booking systems, EDI/API, trailer planning, driverless freight planning, customs workflows | React, GTM; Firecrawl confirms Zeebrugge-Gothenburg, Zeebrugge-Fredrikstad and Zeebrugge-Immingham route context |
+| CLdN | Zeebrugge route network and CLdN RoRo platform evidence | Booking, RoRo terminal planning, EDI/API, Brexit/customs workflows | Next.js, React, GTM, GA, Cookiebot, OneTrust; Firecrawl confirms CLdN/DFDS route expansion and Routescanner network evidence |
+| C.RO Ports / C.RO Terminal | Routescanner lists C.RO Ports Zeebrugge terminal connections | RoRo TOS/YMS, gate OCR, EDI/API, customer integrations | Next.js, React, GTM, GA, Cookiebot, OneTrust; terminal-network evidence around Albert II Dock and Brittanniadok |
+| UECC | Technology-driven terminal operations, real-time tracking, web-based tracking, OEM/customer IT integration, VDTMS | Automotive terminal software, voyage/vehicle visibility, EDI/API with OEMs and ports | Cloudflare, WordPress, GTM; one of the strongest observed automotive terminal-management signals |
 | KESS | No named operational vendor in seed sources | Shipping operations, automotive EDI, route planning, customer visibility | Bootstrap, Go Daddy Website Builder; shipping operations, planner and customer service roles to research |
+
+## Firecrawl Expansion Layer
+
+The project now includes a Firecrawl-backed research layer instead of only a dependency-free seed scraper.
+
+| Firecrawl output | What it adds |
+| --- | --- |
+| [`data/firecrawl_evidence.csv`](data/firecrawl_evidence.csv) | Successful Firecrawl search+scrape findings for ETA Terminal Tool, IRP, Maritime Logistics Zone, ECS software vacancy, CLdN/DFDS routes, DFDS schedules, UECC terminal operations and Routescanner CLdN network data. |
+| [`data/firecrawl_targets.csv`](data/firecrawl_targets.csv) | A reproducible target list for future Firecrawl scrape/crawl runs, with scope, limit, depth and source references. |
+| [`scripts/firecrawl_collect.py`](scripts/firecrawl_collect.py) | A small CLI wrapper that runs `firecrawl scrape` or `firecrawl crawl` from the target list and writes outputs to `data/firecrawl/`. |
+
+The strongest new tech-stack signal is the official ECS software-developer vacancy: it names in-house applications, customer/supplier interfaces, `.NET`, `Angular`, `C#`, `MS SQL Server`, `TSQL`, `ASP.NET Core`, `Azure`, `Docker`, `Kubernetes`, event-driven architecture and domain-driven design. UECC also exposes unusually clear terminal-system evidence: real-time tracking, web-based tracking, OEM/customer IT integration and a Vehicle Distribution and Terminal Management System.
 
 ## Complete Tech Stack Tag View
 
@@ -194,6 +211,7 @@ The repo separates operational technology, ecosystem platforms and visible web-c
 | Observed port and data layer | `APICS`, `ZEDIS`, `NxtPort`, `RX-SeaPort`, `IRP`, `Terminal API`, `APICA digital twin`, `smart cameras`, `ETA Terminal Tool` |
 | Terminal, yard and transport systems | `TOS`, `YMS`, `VMS`, `gate OCR`, `crane/OCR options`, `vehicle inventory`, `trailer visibility`, `slot booking`, `rail planning`, `TMS`, `WMS`, `EDI/API` |
 | Customs, analytics and energy operations | `customs declaration software`, `document automation`, `release-status queues`, `Microsoft Analytics`, `Reporting Services`, `BI dashboards`, `dwell-time models`, `ETA prediction`, `demand forecasts`, `SCADA/OT`, `nominations`, `compliance reporting` |
+| Company engineering and terminal-management signals | `.NET`, `Angular`, `C#`, `MS SQL Server`, `TSQL`, `ASP.NET Core`, `Azure`, `Docker`, `Kubernetes`, `event-driven architecture`, `domain-driven design`, `VDTMS`, `track-and-trace`, `web-based tracking`, `OEM IT integration` |
 | Visible web-channel signals | `Drupal`, `WordPress`, `Next.js`, `React`, `Vue`, `Cloudflare`, `Google Tag Manager`, `Google Analytics`, `Cookiebot`, `OneTrust`, `Bootstrap`, `jQuery` |
 
 Observed stack tags are strongest around the port-community layer. Inferred tags are operationally plausible from the company segment and should be validated through interviews, job postings, vendor cases or direct system evidence.
@@ -272,6 +290,15 @@ Refresh source extracts:
 npm run scrape:sources
 ```
 
+Run targeted Firecrawl collection:
+
+```sh
+npm run scrape:firecrawl -- --dry-run
+npm run scrape:firecrawl -- --limit 3
+```
+
+Firecrawl uses either `FIRECRAWL_API_KEY` or stored CLI credentials. Outputs are written to `data/firecrawl/`; the source-backed evidence table is already captured in [`data/firecrawl_evidence.csv`](data/firecrawl_evidence.csv).
+
 Run enrichment scripts:
 
 ```sh
@@ -284,6 +311,7 @@ npm run scan:webtech
 The repo includes automated checks so the project stays presentable:
 
 - `scripts/validate_dataset.py` checks CSV headers, duplicate records, confidence values, source references and scraped extract coverage.
+- Firecrawl target and evidence datasets are validated against the source register.
 - Playwright verifies that the dashboard renders on desktop and mobile without layout overflow.
 - GitHub Actions runs dataset validation and visual smoke tests on pushes.
 - GitHub Pages deploys the static dashboard from `docs/`.
@@ -317,6 +345,7 @@ For investment, sales or partnership decisions, validate the findings with compa
 - Pull a full APZI member export through browser/API inspection or direct APZI/Voka access.
 - Run manual Wappalyzer/BuiltWith checks and compare them with [`data/web_tech_scan.csv`](data/web_tech_scan.csv).
 - Add job-posting evidence for ERP, TMS, WMS, BI, cloud, cybersecurity and terminal-planning vendors.
+- Convert more Firecrawl scrape outputs into source-backed rows for company-specific tech-stack evidence.
 - Verify VAT, registry and financial signals through official KBO/BCE and NBB sources.
 - Add role-level outreach mapping for operations, IT, customs, terminal planning and commercial teams.
 - Repeat the same research pattern for another logistics cluster to prove transferability.
