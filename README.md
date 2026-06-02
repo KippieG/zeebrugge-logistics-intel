@@ -1,59 +1,100 @@
 # Zeebrugge Port Tech Intelligence
 
-A portfolio-grade intelligence product that turns public Zeebrugge port-logistics signals into structured datasets, commercial software opportunities, and an executive-ready dashboard.
+An executive-ready intelligence repo that turns public Zeebrugge port-logistics signals into structured datasets, technology-stack hypotheses, scraped source evidence and commercial software opportunities.
 
 [![Validate dataset](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/validate.yml/badge.svg)](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/validate.yml)
 [![Deploy GitHub Pages](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/pages.yml/badge.svg)](https://github.com/KippieG/zeebrugge-logistics-intel/actions/workflows/pages.yml)
 
-**Snapshot:** 2026-06-02  
-**Scope:** Zeebrugge-focused port and logistics ecosystem, with Port of Antwerp-Bruges context  
-**Output:** Static intelligence dashboard, structured CSV datasets, scraped source extracts, enrichment scripts, visual smoke tests and opportunity analysis  
-**Live page:** https://kippieg.github.io/zeebrugge-logistics-intel/
+![Zeebrugge Port Tech Intelligence dashboard hero](docs/assets/zeebrugge-intelligence-hero.png)
 
-## Portfolio Signal
+**Live dashboard:** https://kippieg.github.io/zeebrugge-logistics-intel/  
+**Snapshot date:** 2026-06-02  
+**Scope:** Zeebrugge-focused logistics ecosystem, with Port of Antwerp-Bruges context  
+**What this is:** market intelligence, data modeling, source scraping, tech-stack inference and commercial opportunity mapping in one portfolio project
 
-This repo is designed to be read by technical reviewers, recruiters, managers and commercial operators. It demonstrates:
+## The Short Version
 
-- **Research judgment:** public-source collection, evidence labels and conservative confidence scoring.
-- **Data discipline:** normalized CSV datasets, source IDs, scraped extracts and validation checks.
-- **Commercial thinking:** buyer segments, pain signals, product angles and go-to-market notes.
-- **Delivery quality:** GitHub Pages dashboard, CI validation, Playwright visual smoke tests and reproducible scripts.
-- **Communication:** a clean executive narrative that turns noisy logistics data into decisions.
+Zeebrugge is a dense logistics gateway with automotive/RoRo, UK-Ireland shortsea, container handling, intermodal warehousing, customs workflows and LNG/energy logistics. That mix creates recurring operational pain around visibility, release status, yard coordination, document flow and data interoperability.
 
-## Why This Exists
+This repo maps that ecosystem from public sources and turns it into:
 
-Zeebrugge is a concentrated logistics gateway with strong activity in automotive/RoRo, UK-Ireland shortsea, intermodal warehousing, customs workflows, container handling and LNG/energy logistics. That mix creates a practical research target for port-logistics software opportunities:
+- a polished GitHub Pages intelligence dashboard
+- 20 seed companies and platforms
+- 33 registered public sources
+- 33 scraped text extracts
+- 9 structured CSV datasets
+- 6 port-logistics technology layers
+- 5 commercial software opportunity areas
+- validation scripts, CI checks and Playwright visual smoke tests
 
-- yard visibility and dwell-time tracking
-- customs release and document automation
-- terminal orchestration and gate workflows
-- TMS/WMS/rail planning and customer visibility
-- data interoperability through port-community platforms
-- sales intelligence for logistics-tech vendors
+The result is not just a list of companies. It is a repeatable research system that shows how public information can become a useful commercial view of a logistics market.
 
-The project separates **observed public technology signals** from **inferred operational stack needs** so the data stays useful without overstating what public sources prove.
+## Why This Repo Stands Out
 
-## Dashboard
+This project is built to show end-to-end ownership, not only research.
 
-The static dashboard in [`docs/`](docs/index.html) is designed for GitHub Pages and summarizes the research as a commercial intelligence page.
+| Capability | What the repo proves |
+| --- | --- |
+| Market research | Finds useful signals in port, terminal, APZI, company, job, registry and platform sources. |
+| Data engineering | Normalizes findings into CSV datasets with source IDs, confidence labels and validation rules. |
+| Scraping | Captures text extracts from seed URLs and keeps scraped evidence available for review. |
+| Tech-stack analysis | Separates observed platform signals from inferred operational systems such as TOS, YMS, WMS, TMS, EDI and APIs. |
+| Commercial thinking | Converts findings into buyer segments, pain signals, product angles and go-to-market notes. |
+| Delivery quality | Ships a dashboard, README, reports, scripts, CI validation and visual smoke tests. |
 
-It includes:
+For a recruiter, this shows practical execution.  
+For a manager, it shows judgment and communication.  
+For a commercial team, it shows how research can point toward real software opportunities.
 
-- an executive hero visual built for portfolio presentation
-- evidence-backed dataset coverage
-- manager-facing business interpretation
-- company stack matrix
-- technology taxonomy
-- opportunity map
-- method and artifact links
+## Key Findings
 
-Screenshots are generated by Playwright visual smoke tests and written to `test-results/` locally.
+### 1. The strongest technology signals are ecosystem-level
 
-```sh
-npm install
-npx playwright install chromium
-npm run test:visual
-```
+The clearest verified stack signals sit around the port-community and data-sharing layer:
+
+- **APICS** for port/vessel operational information
+- **ZEDIS** as a Zeebrugge port-community system signal
+- **NxtPort / RX-SeaPort** for data sharing and customs-related coordination
+- **IRP** for import release and customs digitization across Belgian ports
+- **APICA digital twin**, smart cameras, ETA tooling and terminal APIs from Port of Antwerp-Bruges
+
+This matters because software vendors should not treat each company as an isolated island. The commercial opportunity is often about integrating with the port data layer, not replacing it.
+
+### 2. Company-level operational stacks are mostly hidden
+
+Most terminals, forwarders and logistics operators do not publicly name their operational software vendors. The repo therefore avoids overclaiming.
+
+Instead, each company is scored using:
+
+- `observed`: a public source names the system, platform, product or vendor
+- `inferred`: the operational stack is likely from the business activity, but no vendor is named
+- `unknown`: no reliable public signal was found
+
+Example: ECS / 2XL has an observed Microsoft Analytics / Reporting Services signal. Many other operators likely use TOS, YMS, WMS, TMS, EDI, gate tooling or customs systems, but those are marked as inferred unless the source evidence is explicit.
+
+### 3. Zeebrugge has strong software pain around visibility and customs
+
+The repeated operational themes are:
+
+- vehicle, trailer and container dwell time
+- yard location and handover status
+- customs release and missing-document workflows
+- UK/Ireland shortsea complexity
+- terminal gate coordination
+- rail, warehouse and labor planning
+- API/data readiness for shippers and partners
+
+That makes Zeebrugge a useful research beachhead for logistics-tech vendors, because the same structure can be reused for Antwerp, Rotterdam, Hamburg, Dunkirk or other North Sea logistics clusters.
+
+### 4. Webtech scans are useful, but not enough
+
+The lightweight scanner found visible web-channel signals such as Drupal, WordPress, Next.js, React, Cloudflare, Google Tag Manager, Cookiebot and OneTrust.
+
+These are not proof of operational systems. They are useful digital-maturity signals, but they must be combined with job postings, vendor cases, registry data, interviews and platform evidence before being used commercially.
+
+### 5. APZI confirms ecosystem density, but not a clean full export
+
+Public APZI pages confirm a broader Zeebrugge port-company ecosystem and expose categories, board/segment representation and visible member-page candidates. A complete member database still needs direct APZI/Voka access, browser/API extraction or another official export.
 
 ## Dataset At A Glance
 
@@ -69,33 +110,65 @@ npm run test:visual
 | APZI public-page candidates | 22 | [`data/apzi_member_candidates.csv`](data/apzi_member_candidates.csv) |
 | Webtech scan rows | 20 | [`data/web_tech_scan.csv`](data/web_tech_scan.csv) |
 
-## Key Findings
+## What Was Scraped And Modeled
 
-- The strongest verified ecosystem signals are **APICS**, **ZEDIS**, **NxtPort/RX-SeaPort**, **IRP**, **APICA digital twin**, smart cameras and terminal API tooling.
-- Company-level operational stacks are mostly not publicly named, so TOS/YMS/WMS/TMS/EDI/API signals are marked as inferred unless a source names a vendor or product.
-- ECS has a public Microsoft Analytics / Reporting Services signal and additional job signals around automated warehouses, digitization, automation engineers and information systems.
-- CSP Zeebrugge has public VAT/contact data, ZPMC crane infrastructure, a VBS web application manual, and IT hiring signals.
-- Lightweight website scans found visible web-channel signals such as Drupal, WordPress, Next.js, React, Cloudflare, Google Tag Manager, Cookiebot and OneTrust across seed domains.
-- APZI public pages confirm a roughly 160-company ecosystem and expose categories/board representation, but not a clean full member export through simple HTML scraping.
+The source register and scraper focus on public evidence that can support business analysis:
 
-## Commercial Read
+- Port of Antwerp-Bruges digital product pages and port facts
+- APICS, ZEDIS, NxtPort, RX-SeaPort and IRP-related sources
+- RoRo, deepsea, container, customs, forwarding and warehousing company pages
+- APZI public pages and board/member signals
+- company contact, VAT/registry and hiring signals where public snippets expose them
+- webtech headers, generators, scripts and visible website metadata
 
-The analysis points toward five practical software opportunity areas:
+Scraped extracts are stored in [`data/scraped/`](data/scraped), so the dataset is reviewable instead of being a black box.
 
-| Opportunity | Buyer logic |
-| --- | --- |
-| Yard visibility | RoRo, automotive, trailer and overflow operations need clearer location, dwell and release status. |
-| Customs automation | UK-Ireland and port-community workflows create recurring document and release-status friction. |
-| ETA and capacity forecasting | Vessel, gate, warehouse and labor planning benefit from connected event data. |
-| Sales intelligence | Vendors can prioritize accounts by operational segment, public digital maturity and likely pain. |
-| API/data readiness audit | Operators and shippers need to know where clean integration is possible and where gaps remain. |
+## Company And Stack Map
+
+The company dataset maps operators into practical segments:
+
+| Segment | Example companies/platforms | Likely stack themes |
+| --- | --- | --- |
+| Port authority and data layer | Port of Antwerp-Bruges, NxtPort / RX-SeaPort | APICS, ZEDIS, IRP, APIs, digital twin, smart cameras |
+| Automotive and RoRo | ICO, Wallenius Wilhelmsen, MOSOLF, UECC, C.RO, KESS | TOS, YMS, vehicle inventory, gate OCR, OEM/customer portals |
+| Container and deepsea terminals | CSP Zeebrugge Terminal, PSA Zeebrugge | Container TOS, crane/OCR options, EDI/API, rail/barge planning |
+| Intermodal and warehousing | ECS / 2XL, NDQ Logistics, DFDS, CLdN | TMS, WMS, BI, rail planning, customs integration, ETA prediction |
+| Forwarders, customs and agencies | Alltraco, Dens Ocean, RBZ, Herfurth / M-Star, Notman | Customs declaration software, freight TMS, document automation, APICS/ZEDIS workflows |
+| Energy logistics | Fluxys LNG Terminal Zeebrugge | SCADA/OT, nominations, scheduling, safety systems, compliance reporting |
+
+## Commercial Opportunity Map
+
+The analysis points toward five software opportunities that are narrow enough to be useful and broad enough to be commercially interesting.
+
+| Opportunity | Buyer logic | Product angle |
+| --- | --- | --- |
+| Yard visibility | RoRo, automotive, trailer and overflow operations need clearer dwell, location and release status. | Overlay existing TOS/YMS instead of replacing it. |
+| Customs automation | UK/Ireland and port-community workflows create repeated document and release-status friction. | Build around IRP, NxtPort and RX-SeaPort workflows. |
+| ETA and capacity forecasting | Terminals, warehouses and rail planners need predictions tied to gates, labor and capacity. | Forecast dwell risk, gate peaks, rail slots and warehouse load. |
+| Sales intelligence | Vendors need a way to prioritize accounts by likely pain and digital maturity. | Score companies by segment, public tech signals, hiring signals and confidence. |
+| API/data readiness audit | Operators and shippers need to know where clean event data can be exposed. | Assess integration gaps and recommend API/event-data roadmap steps. |
+
+## Dashboard
+
+The GitHub Pages dashboard in [`docs/`](docs/index.html) turns the research into a visual commercial story:
+
+- executive hero and positioning
+- dataset coverage metrics
+- manager-facing business interpretation
+- technology-signal cards
+- company stack matrix
+- stack taxonomy
+- software opportunity map
+- method and artifact links
+
+Live page: https://kippieg.github.io/zeebrugge-logistics-intel/
 
 ## Research Outputs
 
-- [`reports/analysis.md`](reports/analysis.md): market map, technology signals, gaps and 2026 outlook.
-- [`reports/opportunity-playbook.md`](reports/opportunity-playbook.md): product and sales hypotheses for yard visibility, customs automation, forecasting and API readiness.
+- [`reports/analysis.md`](reports/analysis.md): executive take, market map, technology signals, gaps and 2026 outlook.
+- [`reports/opportunity-playbook.md`](reports/opportunity-playbook.md): practical product and sales hypotheses for yard visibility, customs automation, forecasting and API readiness.
 - [`reports/enrichment-guide.md`](reports/enrichment-guide.md): workflow for APZI expansion, webtech checks, job signals, registry research and contact-role mapping.
-- [`data/research_backlog.csv`](data/research_backlog.csv): status-tracked next research workstreams.
+- [`data/research_backlog.csv`](data/research_backlog.csv): next research workstreams and status tracking.
 
 ## Reproduce The Workflow
 
@@ -112,7 +185,7 @@ Validate all structured datasets:
 npm run validate:data
 ```
 
-Run the full local check:
+Run the full local check, including Playwright visual smoke tests:
 
 ```sh
 npm run check
@@ -131,22 +204,33 @@ npm run scrape:apzi
 npm run scan:webtech
 ```
 
+## Quality Gates
+
+The repo includes automated checks so the project stays presentable:
+
+- `scripts/validate_dataset.py` checks CSV headers, duplicate records, confidence values, source references and scraped extract coverage.
+- Playwright verifies that the dashboard renders on desktop and mobile without layout overflow.
+- GitHub Actions runs dataset validation and visual smoke tests on pushes.
+- GitHub Pages deploys the static dashboard from `docs/`.
+
 ## Methodology
 
-Signals are deliberately conservative:
+The analysis is intentionally conservative:
 
-- `observed`: a public source names the system, platform, product or vendor directly.
-- `inferred`: the stack is operationally likely from services such as terminal operations, customs, warehousing, intermodal planning or track-and-trace, but no vendor is named.
-- `unknown`: no reliable public signal was found.
+- Public source evidence is stored and linked by source ID.
+- Operational software stacks are not claimed as fact unless a public source names them.
+- Inferred systems are labeled as inferred and should be validated before commercial use.
+- Webtech findings are treated as digital-channel signals, not proof of back-office or terminal operations software.
+- The opportunity map is a hypothesis map, not validated customer discovery.
 
-Commercial use should validate inferred stack data through company interviews, official filings, job postings, vendor cases, Wappalyzer/BuiltWith checks, procurement data or direct outreach.
+For investment, sales or partnership decisions, validate the findings with company interviews, official filings, job postings, vendor case studies, Wappalyzer/BuiltWith, procurement data and direct outreach.
 
 ## Repository Structure
 
 ```text
 .
 ├── data/                  # CSV datasets and scraped source extracts
-├── docs/                  # Static GitHub Pages dashboard
+├── docs/                  # Static GitHub Pages dashboard and visual assets
 ├── reports/               # Analysis, playbook and enrichment guide
 ├── scripts/               # Scraping, enrichment and validation scripts
 ├── tests/                 # Playwright visual smoke tests
@@ -160,3 +244,4 @@ Commercial use should validate inferred stack data through company interviews, o
 - Add job-posting evidence for ERP, TMS, WMS, BI, cloud, cybersecurity and terminal-planning vendors.
 - Verify VAT, registry and financial signals through official KBO/BCE and NBB sources.
 - Add role-level outreach mapping for operations, IT, customs, terminal planning and commercial teams.
+- Repeat the same research pattern for another logistics cluster to prove transferability.
