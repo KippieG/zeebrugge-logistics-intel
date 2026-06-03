@@ -29,8 +29,8 @@ An executive-ready intelligence repo that turns public Zeebrugge port-logistics 
 
 ## What I Built
 
-- Expanded the evidence base to **42 public sources**, including Firecrawl-discovered port, route, vacancy and terminal-operation pages.
-- Modeled **12 structured datasets** with source IDs, confidence labels, Firecrawl targets and automated validation.
+- Expanded the evidence base to **45 public sources**, including Firecrawl-discovered port, route, vacancy, terminal-operation and TOS vendor pages.
+- Modeled **13 structured datasets** with source IDs, confidence labels, Firecrawl targets, vendor research and automated validation.
 - Translated public signals into **5 commercial software opportunities** for logistics-tech buyers.
 
 ## The Short Version
@@ -41,11 +41,12 @@ This repo maps that ecosystem from public sources and turns it into:
 
 - a polished GitHub Pages intelligence dashboard
 - 20 seed companies and platforms
-- 42 registered public sources
-- 42 scraped text extracts
-- 12 structured CSV datasets
-- 10 Firecrawl-ready crawl/scrape targets
-- 8 Firecrawl evidence rows from successful search+scrape runs
+- 45 registered public sources
+- 45 scraped text extracts
+- 13 structured CSV datasets
+- 13 Firecrawl-ready crawl/scrape targets
+- 11 Firecrawl evidence rows from successful search+scrape runs
+- 11 vendor stack research rows
 - 6 port-logistics technology layers
 - 5 commercial software opportunity areas
 - validation scripts, CI checks and Playwright visual smoke tests
@@ -75,6 +76,7 @@ For a commercial team, it shows how research can point toward real software oppo
 
 The clearest verified stack signals sit around the port-community and data-sharing layer:
 
+- **Navis N4 / Kaleris N4** for CSP Zeebrugge Terminal TOS, now backed by public deployment evidence
 - **APICS** for port/vessel operational information
 - **ZEDIS** as a Zeebrugge port-community system signal
 - **NxtPort / RX-SeaPort** for data sharing and customs-related coordination
@@ -124,8 +126,8 @@ Public APZI pages confirm a broader Zeebrugge port-company ecosystem and expose 
 | Area | Count | File |
 | --- | ---: | --- |
 | Seed companies and platforms | 20 | [`data/companies.csv`](data/companies.csv) |
-| Public source register | 42 | [`data/sources.csv`](data/sources.csv) |
-| Scraped source extracts | 42 | [`data/scraped/`](data/scraped) |
+| Public source register | 45 | [`data/sources.csv`](data/sources.csv) |
+| Scraped source extracts | 45 | [`data/scraped/`](data/scraped) |
 | Port-logistics stack layers | 6 | [`data/stack_taxonomy.csv`](data/stack_taxonomy.csv) |
 | Product opportunities | 5 | [`data/opportunities.csv`](data/opportunities.csv) |
 | Company enrichment rows | 20 | [`data/company_enrichment.csv`](data/company_enrichment.csv) |
@@ -133,8 +135,9 @@ Public APZI pages confirm a broader Zeebrugge port-company ecosystem and expose 
 | APZI public-page candidates | 22 | [`data/apzi_member_candidates.csv`](data/apzi_member_candidates.csv) |
 | Webtech scan rows | 20 | [`data/web_tech_scan.csv`](data/web_tech_scan.csv) |
 | Company-by-company stack rows | 20 | [`data/company_stack_signals.csv`](data/company_stack_signals.csv) |
-| Firecrawl scrape/crawl targets | 10 | [`data/firecrawl_targets.csv`](data/firecrawl_targets.csv) |
-| Firecrawl evidence rows | 8 | [`data/firecrawl_evidence.csv`](data/firecrawl_evidence.csv) |
+| Firecrawl scrape/crawl targets | 13 | [`data/firecrawl_targets.csv`](data/firecrawl_targets.csv) |
+| Firecrawl evidence rows | 11 | [`data/firecrawl_evidence.csv`](data/firecrawl_evidence.csv) |
+| Vendor stack research rows | 11 | [`data/tech_stack_vendor_research.csv`](data/tech_stack_vendor_research.csv) |
 
 ## What Was Scraped And Modeled
 
@@ -146,6 +149,7 @@ The source register and scraper focus on public evidence that can support busine
 - APZI public pages and board/member signals
 - company contact, VAT/registry and hiring signals where public snippets expose them
 - Firecrawl-discovered ETA Terminal Tool, IRP, Maritime Logistics Zone, ECS vacancy, UECC terminal and RoRo route-network pages
+- Navis N4 / Kaleris TOS deployment, product and security context for terminal stack research
 - webtech headers, generators, scripts and visible website metadata
 
 Scraped extracts are stored in [`data/scraped/`](data/scraped), so the dataset is reviewable instead of being a black box.
@@ -163,6 +167,47 @@ The company dataset maps operators into practical segments:
 | Forwarders, customs and agencies | Alltraco, Dens Ocean, RBZ, Herfurth / M-Star, Notman | Customs declaration software, freight TMS, document automation, APICS/ZEDIS workflows |
 | Energy logistics | Fluxys LNG Terminal Zeebrugge | SCADA/OT, nominations, scheduling, safety systems, compliance reporting |
 
+## Tech Stack Vendor Map
+
+This is the sharper vendor-level view: what is publicly observed, what is category evidence, and what should still be verified through jobs, vendor cases, interviews or procurement signals.
+
+| Stack family | Vendor / product | Evidence status | Where it matters |
+| --- | --- | --- | --- |
+| Terminal Operating System | **Navis N4 / Kaleris N4** | Observed public evidence | CSP Zeebrugge Terminal |
+| Terminal optimization | Expert Decking / PrimeRoute | Observed in Navis N4 deployment article | CSP yard strategy and route/resource optimization |
+| Port community systems | APICS, ZEDIS, NxtPort, RX-SeaPort, IRP | Observed public evidence | Port authority, terminals, agents, customs and forwarders |
+| Customs / forwarding | CargoWise, Descartes, customs declaration platforms | Research target | Forwarders, customs brokers and shipping agents |
+| Transport management | TMS, route planning, ferry booking, trailer planning | Inferred vendor family | DFDS, CLdN, ECS, NDQ and shortsea/intermodal flows |
+| Warehouse management | WMS, automated warehouse systems, MS SQL BI | Mixed evidence | ECS and warehouse-heavy operators |
+| Automotive terminal management | VDTMS, vehicle inventory, track-and-trace | Mixed evidence | UECC observed; ICO, MOSOLF, Wallenius, C.RO and KESS to verify |
+| Enterprise engineering | .NET, Angular, C#, MS SQL Server, Azure, Docker, Kubernetes | Observed public evidence | ECS in-house logistics applications |
+| ERP / finance | SAP, Oracle, Microsoft Dynamics | Research target | Larger terminals and logistics operators |
+
+The important upgrade is CSP: `Navis N4` is no longer just a plausible terminal-system family. It is now an observed public stack signal in this repo.
+
+### Tech Stack Labels
+
+![Navis N4](https://img.shields.io/badge/Navis_N4-observed-1f6f5b?style=for-the-badge)
+![Kaleris TOS](https://img.shields.io/badge/Kaleris_TOS-terminal_ops-1f7f8f?style=for-the-badge)
+![APICS](https://img.shields.io/badge/APICS-port_ops-b05b35?style=for-the-badge)
+![ZEDIS](https://img.shields.io/badge/ZEDIS-port_community-566b7a?style=for-the-badge)
+![NxtPort](https://img.shields.io/badge/NxtPort-data_layer-24302b?style=for-the-badge)
+![IRP](https://img.shields.io/badge/IRP-customs_release-1f6f5b?style=for-the-badge)
+
+![ETA Terminal API](https://img.shields.io/badge/ETA_Terminal_API-visibility-1f7f8f?style=for-the-badge)
+![TOS](https://img.shields.io/badge/TOS-terminal_system-b05b35?style=for-the-badge)
+![YMS](https://img.shields.io/badge/YMS-yard_visibility-566b7a?style=for-the-badge)
+![WMS](https://img.shields.io/badge/WMS-warehouse_ops-24302b?style=for-the-badge)
+![TMS](https://img.shields.io/badge/TMS-transport_ops-1f6f5b?style=for-the-badge)
+![EDI API](https://img.shields.io/badge/EDI%2FAPI-integration-1f7f8f?style=for-the-badge)
+
+![.NET](https://img.shields.io/badge/.NET-ECS_stack-b05b35?style=for-the-badge)
+![Angular](https://img.shields.io/badge/Angular-ECS_stack-566b7a?style=for-the-badge)
+![Azure](https://img.shields.io/badge/Azure-cloud_signal-24302b?style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-platform_signal-1f6f5b?style=for-the-badge)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-platform_signal-1f7f8f?style=for-the-badge)
+![MS SQL Server](https://img.shields.io/badge/MS_SQL_Server-data_stack-b05b35?style=for-the-badge)
+
 ## Company Tech Stack Signals
 
 This section is the practical per-company view: what is observed, what is inferred from the operating model, what the latest webtech scan found, and which hiring/job snippets reveal operational or IT priorities.
@@ -177,7 +222,7 @@ This section is the practical per-company view: what is observed, what is inferr
 | Wallenius Wilhelmsen Zeebrugge | No specific Zeebrugge vendor in seed sources | Automotive terminal systems, global shipping EDI, customer visibility, yard management | GTM, Cookiebot; APZI cargo-handler board signal |
 | MOSOLF Carcenter Zeebrugge | No named operational vendor | Vehicle inventory, VMS/YMS, damage inspection, OEM/customer portals, transport planning | WordPress, jQuery; PDI, yard, operations, IT and customer service roles to research |
 | PSA Zeebrugge | No named operational vendor in seed source | TOS, EDI, rail/barge planning, yard/gate integrations, PCS integration | Cloudflare, Drupal, GTM, GA; terminal planning, gate, operations and IT roles to research |
-| CSP Zeebrugge Terminal | ZPMC cranes, VBS web app, TOS-connected internal apps, datawarehouse, BI tools, Java, JavaScript, Groovy, Python, CSS, HTML, SQL Oracle, Git | Container TOS, crane/OCR options, EDI/API, PCS integrations, terminal planning | WordPress, GTM, GA, jQuery; IT Analyst Developer job mentions TOS, datawarehouse and BI tools |
+| CSP Zeebrugge Terminal | Navis N4 / Kaleris N4 TOS, Expert Decking, PrimeRoute, ZPMC cranes, VBS web app, TOS-connected internal apps, datawarehouse, BI tools, Java, JavaScript, Groovy, Python, CSS, HTML, SQL Oracle, Git | Container TOS, crane/OCR options, EDI/API, PCS integrations, terminal planning | WordPress, GTM, GA, jQuery; Navis N4 deployment evidence plus IT Analyst Developer signal |
 | Fluxys LNG Terminal Zeebrugge | No named operational vendor in seed sources | SCADA/OT, nominations, scheduling, safety systems, compliance reporting, cybersecurity | React, GTM, GA, OneTrust, Bootstrap; OT/process control/HSE/cybersecurity roles to research |
 | Alltraco | AEO/customs capability | Customs declaration software, forwarding TMS, document management, customer communication tools | GTM, Bootstrap; customs declarant, freight forwarder and operations roles to research |
 | Notman Logistics | No named operational vendor | Fleet planning, telematics, basic WMS, invoicing/accounting | Web scan failed with HTTP 503; planner, dispatcher, warehouse and fleet roles to research |
@@ -196,11 +241,11 @@ The project now includes a Firecrawl-backed research layer instead of only a dep
 
 | Firecrawl output | What it adds |
 | --- | --- |
-| [`data/firecrawl_evidence.csv`](data/firecrawl_evidence.csv) | Successful Firecrawl search+scrape findings for ETA Terminal Tool, IRP, Maritime Logistics Zone, ECS software vacancy, CLdN/DFDS routes, DFDS schedules, UECC terminal operations and Routescanner CLdN network data. |
+| [`data/firecrawl_evidence.csv`](data/firecrawl_evidence.csv) | Successful Firecrawl search+scrape findings for ETA Terminal Tool, IRP, Maritime Logistics Zone, ECS software vacancy, CLdN/DFDS routes, DFDS schedules, UECC terminal operations, Routescanner CLdN network data and Navis N4/Kaleris TOS evidence. |
 | [`data/firecrawl_targets.csv`](data/firecrawl_targets.csv) | A reproducible target list for future Firecrawl scrape/crawl runs, with scope, limit, depth and source references. |
 | [`scripts/firecrawl_collect.py`](scripts/firecrawl_collect.py) | A small CLI wrapper that runs `firecrawl scrape` or `firecrawl crawl` from the target list and writes outputs to `data/firecrawl/`. |
 
-The strongest new tech-stack signal is the official ECS software-developer vacancy: it names in-house applications, customer/supplier interfaces, `.NET`, `Angular`, `C#`, `MS SQL Server`, `TSQL`, `ASP.NET Core`, `Azure`, `Docker`, `Kubernetes`, event-driven architecture and domain-driven design. UECC also exposes unusually clear terminal-system evidence: real-time tracking, web-based tracking, OEM/customer IT integration and a Vehicle Distribution and Terminal Management System.
+The strongest company-specific tech-stack signals are now CSP and ECS. CSP has public Navis N4 / Kaleris N4 TOS deployment evidence. ECS has an official software-developer vacancy that names in-house applications, customer/supplier interfaces, `.NET`, `Angular`, `C#`, `MS SQL Server`, `TSQL`, `ASP.NET Core`, `Azure`, `Docker`, `Kubernetes`, event-driven architecture and domain-driven design. UECC also exposes unusually clear terminal-system evidence: real-time tracking, web-based tracking, OEM/customer IT integration and a Vehicle Distribution and Terminal Management System.
 
 ## Complete Tech Stack Tag View
 
@@ -209,7 +254,7 @@ The repo separates operational technology, ecosystem platforms and visible web-c
 | Layer | Tags |
 | --- | --- |
 | Observed port and data layer | `APICS`, `ZEDIS`, `NxtPort`, `RX-SeaPort`, `IRP`, `Terminal API`, `APICA digital twin`, `smart cameras`, `ETA Terminal Tool` |
-| Terminal, yard and transport systems | `TOS`, `YMS`, `VMS`, `gate OCR`, `crane/OCR options`, `vehicle inventory`, `trailer visibility`, `slot booking`, `rail planning`, `TMS`, `WMS`, `EDI/API` |
+| Terminal, yard and transport systems | `Navis N4`, `Kaleris N4`, `TOS`, `YMS`, `VMS`, `Expert Decking`, `PrimeRoute`, `gate OCR`, `crane/OCR options`, `vehicle inventory`, `trailer visibility`, `slot booking`, `rail planning`, `TMS`, `WMS`, `EDI/API` |
 | Customs, analytics and energy operations | `customs declaration software`, `document automation`, `release-status queues`, `Microsoft Analytics`, `Reporting Services`, `BI dashboards`, `dwell-time models`, `ETA prediction`, `demand forecasts`, `SCADA/OT`, `nominations`, `compliance reporting` |
 | Company engineering and terminal-management signals | `.NET`, `Angular`, `C#`, `MS SQL Server`, `TSQL`, `ASP.NET Core`, `Azure`, `Docker`, `Kubernetes`, `event-driven architecture`, `domain-driven design`, `VDTMS`, `track-and-trace`, `web-based tracking`, `OEM IT integration` |
 | Visible web-channel signals | `Drupal`, `WordPress`, `Next.js`, `React`, `Vue`, `Cloudflare`, `Google Tag Manager`, `Google Analytics`, `Cookiebot`, `OneTrust`, `Bootstrap`, `jQuery` |

@@ -9,3 +9,6 @@ FCT07,CLdN news scrape,https://www.cldn.com/en/news/cldn-and-dfds-extend-zeebrug
 FCT08,DFDS routes scrape,https://www.dfds.com/en/freight-ferries-and-logistics/routes-and-schedules,scrape,official ferry route directory,1,0,Adds Zeebrugge route evidence for DFDS,S40
 FCT09,UECC terminal scrape,https://uecc.com/terminal-operations/,scrape,official automotive terminal operations page,1,0,Adds explicit VDTMS track-and-trace and OEM IT integration evidence,S41
 FCT10,Routescanner CLdN scrape,https://www.routescanner.com/partners/CLdN,scrape,route platform profile,1,0,Adds CLdN network and Zeebrugge terminal connection evidence,S42
+FCT11,CSP Navis N4 deployment scrape,https://www.marinelink.com/news/csp-zeebrugge-terminal-deploys-navis-n-468887,scrape,industry TOS deployment article,1,0,Adds observed Navis N4 vendor evidence for CSP Zeebrugge,S43
+FCT12,Kaleris TOS product scrape,https://kaleris.com/solutions/terminal-operating-system/,scrape,official vendor product page,1,0,Adds N4 TOS feature and integration taxonomy evidence,S44
+FCT13,CISA Navis N4 security scrape,https://www.cisa.gov/news-events/ics-advisories/icsa-25-175-01,scrape,official security advisory,1,0,Adds current Navis N4 risk and mitigation evidence,S45

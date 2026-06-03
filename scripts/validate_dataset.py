@@ -26,6 +26,7 @@ WEB_TECH_SCAN = ROOT / "data" / "web_tech_scan.csv"
 COMPANY_STACK_SIGNALS = ROOT / "data" / "company_stack_signals.csv"
 FIRECRAWL_TARGETS = ROOT / "data" / "firecrawl_targets.csv"
 FIRECRAWL_EVIDENCE = ROOT / "data" / "firecrawl_evidence.csv"
+TECH_STACK_VENDOR_RESEARCH = ROOT / "data" / "tech_stack_vendor_research.csv"
 
 COMPANY_FIELDS = {
     "company",
@@ -94,10 +95,19 @@ FIRECRAWL_EVIDENCE_FIELDS = {
     "source_ids",
     "status",
 }
+TECH_STACK_VENDOR_FIELDS = {
+    "stack_family",
+    "vendor_or_product",
+    "companies_or_segments",
+    "evidence_status",
+    "why_it_matters",
+    "source_ids",
+}
 CONFIDENCE_VALUES = {"high", "medium", "low"}
 PRIORITY_VALUES = {"high", "medium", "low"}
 FIRECRAWL_MODES = {"scrape", "crawl"}
 FIRECRAWL_STATUSES = {"successful", "attempted", "planned"}
+VENDOR_EVIDENCE_STATUSES = {"observed_public", "mixed", "inferred_vendor_family", "category_reference", "research_target"}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -127,6 +137,7 @@ def main() -> int:
     company_stack_signals = read_csv(COMPANY_STACK_SIGNALS)
     firecrawl_targets = read_csv(FIRECRAWL_TARGETS)
     firecrawl_evidence = read_csv(FIRECRAWL_EVIDENCE)
+    tech_stack_vendor_research = read_csv(TECH_STACK_VENDOR_RESEARCH)
 
     company_fields = set(companies[0].keys()) if companies else set()
     source_fields = set(sources[0].keys()) if sources else set()
@@ -140,6 +151,7 @@ def main() -> int:
     company_stack_fields = set(company_stack_signals[0].keys()) if company_stack_signals else set()
     firecrawl_target_fields = set(firecrawl_targets[0].keys()) if firecrawl_targets else set()
     firecrawl_evidence_fields = set(firecrawl_evidence[0].keys()) if firecrawl_evidence else set()
+    tech_stack_vendor_fields = set(tech_stack_vendor_research[0].keys()) if tech_stack_vendor_research else set()
 
     if company_fields != COMPANY_FIELDS:
         fail(f"companies.csv fields mismatch: {sorted(company_fields)}", failures)
@@ -165,6 +177,8 @@ def main() -> int:
         fail(f"firecrawl_targets.csv fields mismatch: {sorted(firecrawl_target_fields)}", failures)
     if firecrawl_evidence_fields != FIRECRAWL_EVIDENCE_FIELDS:
         fail(f"firecrawl_evidence.csv fields mismatch: {sorted(firecrawl_evidence_fields)}", failures)
+    if tech_stack_vendor_fields != TECH_STACK_VENDOR_FIELDS:
+        fail(f"tech_stack_vendor_research.csv fields mismatch: {sorted(tech_stack_vendor_fields)}", failures)
 
     source_ids = {row["id"] for row in sources}
     if len(source_ids) != len(sources):
@@ -270,6 +284,26 @@ def main() -> int:
             if ref not in source_ids:
                 fail(f"{row['id']} Firecrawl evidence: unknown source reference '{ref}'", failures)
 
+    vendor_keys = [
+        (row["stack_family"], row["vendor_or_product"])
+        for row in tech_stack_vendor_research
+    ]
+    if len(set(vendor_keys)) != len(vendor_keys):
+        fail("tech_stack_vendor_research.csv contains duplicate stack/vendor rows", failures)
+    for row in tech_stack_vendor_research:
+        if row["evidence_status"] not in VENDOR_EVIDENCE_STATUSES:
+            fail(
+                f"{row['stack_family']} / {row['vendor_or_product']}: "
+                f"invalid evidence status '{row['evidence_status']}'",
+                failures,
+            )
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        if not refs:
+            fail(f"{row['vendor_or_product']}: no vendor research source references", failures)
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['vendor_or_product']} vendor research: unknown source reference '{ref}'", failures)
+
     scraped_files = list(SCRAPED.glob("S*.txt"))
     scraped_ids = {path.name.split("_", 1)[0] for path in scraped_files}
     missing_extracts = sorted(source_ids - scraped_ids)
@@ -290,6 +324,7 @@ def main() -> int:
         f"{len(apzi_member_candidates)} APZI page candidates, {len(web_tech_scan)} web tech rows, "
         f"{len(company_stack_signals)} company stack rows, "
         f"{len(firecrawl_targets)} Firecrawl targets, {len(firecrawl_evidence)} Firecrawl evidence rows, "
+        f"{len(tech_stack_vendor_research)} vendor stack rows, "
         f"{len(scraped_files)} scraped extracts."
     )
     return 0
