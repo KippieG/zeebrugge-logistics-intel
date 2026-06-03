@@ -30,6 +30,11 @@ FIRECRAWL_EVIDENCE = ROOT / "data" / "firecrawl_evidence.csv"
 FIRECRAWL_OUTPUTS = ROOT / "data" / "firecrawl_outputs.csv"
 TECH_STACK_VENDOR_RESEARCH = ROOT / "data" / "tech_stack_vendor_research.csv"
 VENDOR_EVIDENCE_BY_COMPANY = ROOT / "data" / "vendor_evidence_by_company.csv"
+MANUAL_WEBTECH_CHECKS = ROOT / "data" / "manual_webtech_checks.csv"
+JOB_POSTING_EVIDENCE = ROOT / "data" / "job_posting_evidence.csv"
+REGISTRY_FINANCIAL_VERIFICATION = ROOT / "data" / "registry_financial_verification.csv"
+ROLE_LEVEL_OUTREACH_MAP = ROOT / "data" / "role_level_outreach_map.csv"
+TRANSFERABILITY_CLUSTERS = ROOT / "data" / "transferability_clusters.csv"
 
 COMPANY_FIELDS = {
     "company",
@@ -132,6 +137,58 @@ VENDOR_EVIDENCE_BY_COMPANY_FIELDS = {
     "source_ids",
     "next_research_action",
 }
+MANUAL_WEBTECH_CHECK_FIELDS = {
+    "company",
+    "domain",
+    "local_scan_signals",
+    "external_check_method",
+    "external_check_result",
+    "comparison",
+    "confidence",
+    "source_ids",
+    "next_action",
+}
+JOB_POSTING_EVIDENCE_FIELDS = {
+    "company",
+    "role_or_signal",
+    "source_url",
+    "observed_terms",
+    "stack_family",
+    "evidence_summary",
+    "confidence",
+    "source_ids",
+    "next_action",
+}
+REGISTRY_FINANCIAL_FIELDS = {
+    "company",
+    "identifier_or_lead",
+    "official_source_checked",
+    "official_result",
+    "third_party_or_company_lead",
+    "verification_status",
+    "confidence",
+    "source_ids",
+    "next_action",
+}
+ROLE_LEVEL_OUTREACH_FIELDS = {
+    "segment",
+    "target_role",
+    "companies",
+    "why_this_role_matters",
+    "relevant_signals",
+    "source_ids",
+    "outreach_angle",
+}
+TRANSFERABILITY_CLUSTER_FIELDS = {
+    "cluster",
+    "scope",
+    "analogous_stack_layer",
+    "source_backed_signals",
+    "why_it_proves_transferability",
+    "confidence",
+    "source_ids",
+    "next_research_action",
+}
 CONFIDENCE_VALUES = {"high", "medium", "low"}
 PRIORITY_VALUES = {"high", "medium", "low"}
 FIRECRAWL_MODES = {"scrape", "crawl"}
@@ -170,6 +227,11 @@ def main() -> int:
     firecrawl_outputs = read_csv(FIRECRAWL_OUTPUTS)
     tech_stack_vendor_research = read_csv(TECH_STACK_VENDOR_RESEARCH)
     vendor_evidence_by_company = read_csv(VENDOR_EVIDENCE_BY_COMPANY)
+    manual_webtech_checks = read_csv(MANUAL_WEBTECH_CHECKS)
+    job_posting_evidence = read_csv(JOB_POSTING_EVIDENCE)
+    registry_financial_verification = read_csv(REGISTRY_FINANCIAL_VERIFICATION)
+    role_level_outreach_map = read_csv(ROLE_LEVEL_OUTREACH_MAP)
+    transferability_clusters = read_csv(TRANSFERABILITY_CLUSTERS)
 
     company_fields = set(companies[0].keys()) if companies else set()
     source_fields = set(sources[0].keys()) if sources else set()
@@ -188,6 +250,15 @@ def main() -> int:
     tech_stack_vendor_fields = set(tech_stack_vendor_research[0].keys()) if tech_stack_vendor_research else set()
     vendor_evidence_by_company_fields = (
         set(vendor_evidence_by_company[0].keys()) if vendor_evidence_by_company else set()
+    )
+    manual_webtech_check_fields = set(manual_webtech_checks[0].keys()) if manual_webtech_checks else set()
+    job_posting_evidence_fields = set(job_posting_evidence[0].keys()) if job_posting_evidence else set()
+    registry_financial_fields = (
+        set(registry_financial_verification[0].keys()) if registry_financial_verification else set()
+    )
+    role_level_outreach_fields = set(role_level_outreach_map[0].keys()) if role_level_outreach_map else set()
+    transferability_cluster_fields = (
+        set(transferability_clusters[0].keys()) if transferability_clusters else set()
     )
 
     if company_fields != COMPANY_FIELDS:
@@ -224,6 +295,24 @@ def main() -> int:
         fail(
             "vendor_evidence_by_company.csv fields mismatch: "
             f"{sorted(vendor_evidence_by_company_fields)}",
+            failures,
+        )
+    if manual_webtech_check_fields != MANUAL_WEBTECH_CHECK_FIELDS:
+        fail(f"manual_webtech_checks.csv fields mismatch: {sorted(manual_webtech_check_fields)}", failures)
+    if job_posting_evidence_fields != JOB_POSTING_EVIDENCE_FIELDS:
+        fail(f"job_posting_evidence.csv fields mismatch: {sorted(job_posting_evidence_fields)}", failures)
+    if registry_financial_fields != REGISTRY_FINANCIAL_FIELDS:
+        fail(
+            "registry_financial_verification.csv fields mismatch: "
+            f"{sorted(registry_financial_fields)}",
+            failures,
+        )
+    if role_level_outreach_fields != ROLE_LEVEL_OUTREACH_FIELDS:
+        fail(f"role_level_outreach_map.csv fields mismatch: {sorted(role_level_outreach_fields)}", failures)
+    if transferability_cluster_fields != TRANSFERABILITY_CLUSTER_FIELDS:
+        fail(
+            "transferability_clusters.csv fields mismatch: "
+            f"{sorted(transferability_cluster_fields)}",
             failures,
         )
 
@@ -386,6 +475,61 @@ def main() -> int:
             if ref not in source_ids:
                 fail(f"{row['company']} vendor evidence: unknown source reference '{ref}'", failures)
 
+    externally_checked_companies = [
+        row["company"] for row in manual_webtech_checks if row["company"] in company_set
+    ]
+    if len(set(externally_checked_companies)) != len(externally_checked_companies):
+        fail("manual_webtech_checks.csv contains duplicate in-scope company rows", failures)
+    for row in manual_webtech_checks:
+        if row["company"] in company_set and row["confidence"] not in CONFIDENCE_VALUES:
+            fail(f"{row['company']} manual webtech: invalid confidence '{row['confidence']}'", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['company']} manual webtech: unknown source reference '{ref}'", failures)
+
+    for row in job_posting_evidence:
+        if row["company"] not in company_set:
+            fail(f"job_posting_evidence.csv contains unknown company '{row['company']}'", failures)
+        if row["confidence"] not in CONFIDENCE_VALUES:
+            fail(f"{row['company']} job evidence: invalid confidence '{row['confidence']}'", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        if not refs:
+            fail(f"{row['company']} job evidence: no source references", failures)
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['company']} job evidence: unknown source reference '{ref}'", failures)
+
+    for row in registry_financial_verification:
+        if row["company"] not in company_set and row["company"] != "NBB Central Balance Sheet Office":
+            fail(f"registry_financial_verification.csv contains unknown company '{row['company']}'", failures)
+        if row["confidence"] not in CONFIDENCE_VALUES:
+            fail(f"{row['company']} registry verification: invalid confidence '{row['confidence']}'", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        if not refs:
+            fail(f"{row['company']} registry verification: no source references", failures)
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['company']} registry verification: unknown source reference '{ref}'", failures)
+
+    for row in role_level_outreach_map:
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        if not refs:
+            fail(f"{row['target_role']} outreach row: no source references", failures)
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['target_role']} outreach row: unknown source reference '{ref}'", failures)
+
+    for row in transferability_clusters:
+        if row["confidence"] not in CONFIDENCE_VALUES:
+            fail(f"{row['cluster']} transferability row: invalid confidence '{row['confidence']}'", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        if not refs:
+            fail(f"{row['cluster']} transferability row: no source references", failures)
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['cluster']} transferability row: unknown source reference '{ref}'", failures)
+
     scraped_files = list(SCRAPED.glob("S*.txt"))
     scraped_ids = {path.name.split("_", 1)[0] for path in scraped_files}
     missing_extracts = sorted(source_ids - scraped_ids)
@@ -411,6 +555,11 @@ def main() -> int:
         f"{len(firecrawl_outputs)} Firecrawl output files, "
         f"{len(tech_stack_vendor_research)} vendor stack rows, "
         f"{len(vendor_evidence_by_company)} company vendor-proof rows, "
+        f"{len(manual_webtech_checks)} manual webtech checks, "
+        f"{len(job_posting_evidence)} job evidence rows, "
+        f"{len(registry_financial_verification)} registry/financial verification rows, "
+        f"{len(role_level_outreach_map)} outreach role rows, "
+        f"{len(transferability_clusters)} transferability rows, "
         f"{len(scraped_files)} scraped extracts."
     )
     return 0

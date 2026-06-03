@@ -15,6 +15,15 @@ V2 proof layer:
 - 12 company-level vendor-proof rows separating observed products from inferred stack families.
 - A short PDF manager brief is available at `reports/executive-brief-v2.pdf`.
 
+V3 evidence expansion:
+
+- 33 saved Firecrawl output files including APZI raw HTML/links inspection, jobs, registry leads and Rotterdam transferability research.
+- 6 manual Wappalyzer comparison rows against the local webtech scanner.
+- 6 job/career evidence rows for ECS, CLdN, CSP, ICO and Port of Antwerp-Bruges.
+- 6 registry/financial verification rows separating official method, company-published identifiers and third-party leads.
+- 6 role-level outreach rows for operations, IT/integration, customs, terminal planning, commercial and management teams.
+- 3 transferability rows proving the same research model against the Rotterdam PCS/Portbase/Nextlogic pattern.
+
 ## Top 5 Findings
 
 1. **CSP Zeebrugge has the strongest company-level terminal stack proof.** Public evidence names Navis N4, with Kaleris/Navis context and CSP VBS workflow evidence.
