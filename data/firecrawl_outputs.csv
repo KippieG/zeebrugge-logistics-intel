@@ -1,0 +1,23 @@
+output_file,target_or_scope,source_url,format,collection_status,source_ids,notes
+data/firecrawl/APZI_members_page.json,APZI members page 1,https://www.apzi.be/en/leden,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_2.json,APZI members page 2,https://www.apzi.be/en/leden/page/2,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_3.json,APZI members page 3,https://www.apzi.be/en/leden/page/3,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_4.json,APZI members page 4,https://www.apzi.be/en/leden/page/4,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_5.json,APZI members page 5,https://www.apzi.be/en/leden/page/5,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_6.json,APZI members page 6,https://www.apzi.be/en/leden/page/6,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_7.json,APZI members page 7,https://www.apzi.be/en/leden/page/7,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_8.json,APZI members page 8,https://www.apzi.be/en/leden/page/8,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_9.json,APZI members page 9,https://www.apzi.be/en/leden/page/9,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_10.json,APZI members page 10,https://www.apzi.be/en/leden/page/10,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_11.json,APZI members page 11,https://www.apzi.be/en/leden/page/11,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_12.json,APZI members page 12,https://www.apzi.be/en/leden/page/12,json_markdown,successful,S23,Directory card extraction source for APZI member export.
+data/firecrawl/APZI_members_page_13.json,APZI members page 13,https://www.apzi.be/en/leden/page/13,json_markdown,successful,S23,Directory page scrape retained for audit; no member cards were visible in the markdown response.
+data/firecrawl/apzi-map-leden.json,APZI member URL discovery,https://www.apzi.be,json_map,successful,S23,Firecrawl map result for member detail URL discovery.
+data/firecrawl/apzi-map-all.json,APZI broad site map,https://www.apzi.be,json_map,successful,S23,Firecrawl map result for site structure and news/member discovery.
+data/firecrawl/FCT02_port-digital-products-scrape.json,Port digital products,https://www.portofantwerpbruges.com/en/our-port/digital-products,json_markdown,successful,S02;S03;S34;S35,APICS ZEDIS IRP open data and Terminal API evidence.
+data/firecrawl/FCT04_irp-launch-scrape.json,IRP launch,https://newsroom.portofantwerpbruges.com/en/press-releases/nxtport-port-of-antwerp-bruges-and-the-way-forward-launch-inbound-release-platform,json_markdown,successful,S36,Customs release platform evidence.
+data/firecrawl/FCT06_ecs-careers-scrape.json,ECS software developer vacancy,https://www.ecs.be/en/careers/jobs/software-developer,json_markdown,successful,S38,Observed ECS engineering stack and in-house application evidence.
+data/firecrawl/FCT07_cldn-dfds-zeebrugge-scrape.json,CLdN DFDS Zeebrugge route news,https://www.cldn.com/en/news/cldn-and-dfds-extend-zeebrugge-gothenburg-space-charter-agreement,json_markdown,successful,S39,CLdN and DFDS route capacity and transhipment evidence.
+data/firecrawl/FCT09_uecc-terminal-operations-scrape.json,UECC terminal operations,https://uecc.com/terminal-operations/,json_markdown,successful,S41,VDTMS real-time tracking and OEM integration evidence.
+data/firecrawl/FCT11_csp-navis-n4-deployment-scrape.json,CSP Navis N4 deployment,https://www.marinelink.com/news/csp-zeebrugge-terminal-deploys-navis-n-468887,json_markdown,successful,S43,Observed Navis N4 TOS deployment evidence.
+data/firecrawl/FCT12_kaleris-tos-product-scrape.json,Kaleris TOS product,https://kaleris.com/solutions/terminal-operating-system/,json_markdown,successful,S44,Kaleris N4 TOS API EDI optimization and gate KPI reference.

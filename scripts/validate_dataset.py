@@ -22,11 +22,14 @@ COMPANY_ENRICHMENT = ROOT / "data" / "company_enrichment.csv"
 APZI_BOARD_SIGNALS = ROOT / "data" / "apzi_board_signals.csv"
 RESEARCH_BACKLOG = ROOT / "data" / "research_backlog.csv"
 APZI_MEMBER_CANDIDATES = ROOT / "data" / "apzi_member_candidates.csv"
+APZI_MEMBERS_EXPORT = ROOT / "data" / "apzi_members_export.csv"
 WEB_TECH_SCAN = ROOT / "data" / "web_tech_scan.csv"
 COMPANY_STACK_SIGNALS = ROOT / "data" / "company_stack_signals.csv"
 FIRECRAWL_TARGETS = ROOT / "data" / "firecrawl_targets.csv"
 FIRECRAWL_EVIDENCE = ROOT / "data" / "firecrawl_evidence.csv"
+FIRECRAWL_OUTPUTS = ROOT / "data" / "firecrawl_outputs.csv"
 TECH_STACK_VENDOR_RESEARCH = ROOT / "data" / "tech_stack_vendor_research.csv"
+VENDOR_EVIDENCE_BY_COMPANY = ROOT / "data" / "vendor_evidence_by_company.csv"
 
 COMPANY_FIELDS = {
     "company",
@@ -63,6 +66,14 @@ ENRICHMENT_FIELDS = {
 APZI_BOARD_FIELDS = {"segment", "person", "organization", "role_signal", "tech_relevance", "sources"}
 BACKLOG_FIELDS = {"workstream", "task", "why_it_matters", "method", "status"}
 APZI_MEMBER_FIELDS = {"source_url", "candidate_text", "matched_terms", "status"}
+APZI_MEMBERS_EXPORT_FIELDS = {
+    "member_name",
+    "profile_url",
+    "activity_tags",
+    "directory_page",
+    "source_file",
+    "extraction_status",
+}
 WEB_TECH_FIELDS = {"company", "domain", "status", "signals", "error"}
 COMPANY_STACK_FIELDS = {
     "company",
@@ -95,6 +106,15 @@ FIRECRAWL_EVIDENCE_FIELDS = {
     "source_ids",
     "status",
 }
+FIRECRAWL_OUTPUT_FIELDS = {
+    "output_file",
+    "target_or_scope",
+    "source_url",
+    "format",
+    "collection_status",
+    "source_ids",
+    "notes",
+}
 TECH_STACK_VENDOR_FIELDS = {
     "stack_family",
     "vendor_or_product",
@@ -102,6 +122,15 @@ TECH_STACK_VENDOR_FIELDS = {
     "evidence_status",
     "why_it_matters",
     "source_ids",
+}
+VENDOR_EVIDENCE_BY_COMPANY_FIELDS = {
+    "company",
+    "target_area",
+    "observed_products_or_platforms",
+    "evidence_summary",
+    "confidence",
+    "source_ids",
+    "next_research_action",
 }
 CONFIDENCE_VALUES = {"high", "medium", "low"}
 PRIORITY_VALUES = {"high", "medium", "low"}
@@ -133,11 +162,14 @@ def main() -> int:
     apzi_board = read_csv(APZI_BOARD_SIGNALS)
     backlog = read_csv(RESEARCH_BACKLOG)
     apzi_member_candidates = read_csv(APZI_MEMBER_CANDIDATES)
+    apzi_members_export = read_csv(APZI_MEMBERS_EXPORT)
     web_tech_scan = read_csv(WEB_TECH_SCAN)
     company_stack_signals = read_csv(COMPANY_STACK_SIGNALS)
     firecrawl_targets = read_csv(FIRECRAWL_TARGETS)
     firecrawl_evidence = read_csv(FIRECRAWL_EVIDENCE)
+    firecrawl_outputs = read_csv(FIRECRAWL_OUTPUTS)
     tech_stack_vendor_research = read_csv(TECH_STACK_VENDOR_RESEARCH)
+    vendor_evidence_by_company = read_csv(VENDOR_EVIDENCE_BY_COMPANY)
 
     company_fields = set(companies[0].keys()) if companies else set()
     source_fields = set(sources[0].keys()) if sources else set()
@@ -147,11 +179,16 @@ def main() -> int:
     apzi_board_fields = set(apzi_board[0].keys()) if apzi_board else set()
     backlog_fields = set(backlog[0].keys()) if backlog else set()
     apzi_member_fields = set(apzi_member_candidates[0].keys()) if apzi_member_candidates else set()
+    apzi_members_export_fields = set(apzi_members_export[0].keys()) if apzi_members_export else set()
     web_tech_fields = set(web_tech_scan[0].keys()) if web_tech_scan else set()
     company_stack_fields = set(company_stack_signals[0].keys()) if company_stack_signals else set()
     firecrawl_target_fields = set(firecrawl_targets[0].keys()) if firecrawl_targets else set()
     firecrawl_evidence_fields = set(firecrawl_evidence[0].keys()) if firecrawl_evidence else set()
+    firecrawl_output_fields = set(firecrawl_outputs[0].keys()) if firecrawl_outputs else set()
     tech_stack_vendor_fields = set(tech_stack_vendor_research[0].keys()) if tech_stack_vendor_research else set()
+    vendor_evidence_by_company_fields = (
+        set(vendor_evidence_by_company[0].keys()) if vendor_evidence_by_company else set()
+    )
 
     if company_fields != COMPANY_FIELDS:
         fail(f"companies.csv fields mismatch: {sorted(company_fields)}", failures)
@@ -169,6 +206,8 @@ def main() -> int:
         fail(f"research_backlog.csv fields mismatch: {sorted(backlog_fields)}", failures)
     if apzi_member_fields != APZI_MEMBER_FIELDS:
         fail(f"apzi_member_candidates.csv fields mismatch: {sorted(apzi_member_fields)}", failures)
+    if apzi_members_export_fields != APZI_MEMBERS_EXPORT_FIELDS:
+        fail(f"apzi_members_export.csv fields mismatch: {sorted(apzi_members_export_fields)}", failures)
     if web_tech_fields != WEB_TECH_FIELDS:
         fail(f"web_tech_scan.csv fields mismatch: {sorted(web_tech_fields)}", failures)
     if company_stack_fields != COMPANY_STACK_FIELDS:
@@ -177,8 +216,16 @@ def main() -> int:
         fail(f"firecrawl_targets.csv fields mismatch: {sorted(firecrawl_target_fields)}", failures)
     if firecrawl_evidence_fields != FIRECRAWL_EVIDENCE_FIELDS:
         fail(f"firecrawl_evidence.csv fields mismatch: {sorted(firecrawl_evidence_fields)}", failures)
+    if firecrawl_output_fields != FIRECRAWL_OUTPUT_FIELDS:
+        fail(f"firecrawl_outputs.csv fields mismatch: {sorted(firecrawl_output_fields)}", failures)
     if tech_stack_vendor_fields != TECH_STACK_VENDOR_FIELDS:
         fail(f"tech_stack_vendor_research.csv fields mismatch: {sorted(tech_stack_vendor_fields)}", failures)
+    if vendor_evidence_by_company_fields != VENDOR_EVIDENCE_BY_COMPANY_FIELDS:
+        fail(
+            "vendor_evidence_by_company.csv fields mismatch: "
+            f"{sorted(vendor_evidence_by_company_fields)}",
+            failures,
+        )
 
     source_ids = {row["id"] for row in sources}
     if len(source_ids) != len(sources):
@@ -229,6 +276,17 @@ def main() -> int:
         for ref in refs:
             if ref not in source_ids:
                 fail(f"{row['organization']} APZI signal: unknown source reference '{ref}'", failures)
+
+    apzi_profile_urls = [row["profile_url"] for row in apzi_members_export]
+    if len(set(apzi_profile_urls)) != len(apzi_profile_urls):
+        fail("apzi_members_export.csv contains duplicate profile URLs", failures)
+    if len(apzi_members_export) < 100:
+        fail("apzi_members_export.csv has fewer than 100 member rows", failures)
+    for row in apzi_members_export:
+        if not row["profile_url"].startswith("https://www.apzi.be/en/leden/"):
+            fail(f"{row['member_name']}: invalid APZI profile URL", failures)
+        if not row["directory_page"].isdigit():
+            fail(f"{row['member_name']}: directory_page is not numeric", failures)
 
     for row in web_tech_scan:
         if row["company"] not in company_set:
@@ -284,6 +342,18 @@ def main() -> int:
             if ref not in source_ids:
                 fail(f"{row['id']} Firecrawl evidence: unknown source reference '{ref}'", failures)
 
+    firecrawl_output_files = [row["output_file"] for row in firecrawl_outputs]
+    if len(set(firecrawl_output_files)) != len(firecrawl_output_files):
+        fail("firecrawl_outputs.csv contains duplicate output files", failures)
+    for row in firecrawl_outputs:
+        output_path = ROOT / row["output_file"]
+        if not output_path.exists():
+            fail(f"{row['output_file']}: Firecrawl output file is missing", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['output_file']} Firecrawl output: unknown source reference '{ref}'", failures)
+
     vendor_keys = [
         (row["stack_family"], row["vendor_or_product"])
         for row in tech_stack_vendor_research
@@ -304,6 +374,18 @@ def main() -> int:
             if ref not in source_ids:
                 fail(f"{row['vendor_or_product']} vendor research: unknown source reference '{ref}'", failures)
 
+    for row in vendor_evidence_by_company:
+        if row["company"] not in company_set:
+            fail(f"vendor_evidence_by_company.csv contains unknown company '{row['company']}'", failures)
+        if row["confidence"] not in CONFIDENCE_VALUES:
+            fail(f"{row['company']} vendor evidence: invalid confidence '{row['confidence']}'", failures)
+        refs = [ref.strip() for ref in row["source_ids"].split(";") if ref.strip()]
+        if not refs:
+            fail(f"{row['company']} vendor evidence: no source references", failures)
+        for ref in refs:
+            if ref not in source_ids:
+                fail(f"{row['company']} vendor evidence: unknown source reference '{ref}'", failures)
+
     scraped_files = list(SCRAPED.glob("S*.txt"))
     scraped_ids = {path.name.split("_", 1)[0] for path in scraped_files}
     missing_extracts = sorted(source_ids - scraped_ids)
@@ -321,10 +403,14 @@ def main() -> int:
         f"{len(companies)} companies, {len(sources)} sources, "
         f"{len(stack_layers)} stack layers, {len(opportunities)} opportunities, "
         f"{len(enrichment)} enrichment rows, {len(apzi_board)} APZI board signals, "
-        f"{len(apzi_member_candidates)} APZI page candidates, {len(web_tech_scan)} web tech rows, "
+        f"{len(apzi_member_candidates)} APZI page candidates, "
+        f"{len(apzi_members_export)} APZI member export rows, "
+        f"{len(web_tech_scan)} web tech rows, "
         f"{len(company_stack_signals)} company stack rows, "
         f"{len(firecrawl_targets)} Firecrawl targets, {len(firecrawl_evidence)} Firecrawl evidence rows, "
+        f"{len(firecrawl_outputs)} Firecrawl output files, "
         f"{len(tech_stack_vendor_research)} vendor stack rows, "
+        f"{len(vendor_evidence_by_company)} company vendor-proof rows, "
         f"{len(scraped_files)} scraped extracts."
     )
     return 0

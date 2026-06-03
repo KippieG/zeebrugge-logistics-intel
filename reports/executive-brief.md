@@ -1,20 +1,27 @@
 # Executive Brief: Zeebrugge Port Tech Intelligence
 
-Snapshot date: 2026-06-02
+Snapshot date: 2026-06-03
 
 ## 1-Page Executive Summary
 
 Zeebrugge is a compact but commercially rich logistics cluster inside the Port of Antwerp-Bruges ecosystem. Its mix of automotive/RoRo, UK-Ireland shortsea, container handling, intermodal warehousing, customs activity and LNG/energy logistics creates repeated operational friction around visibility, release status, document flow, yard coordination and data interoperability.
 
-This project turns public-source signals into a structured intelligence product: company mapping, scraped source extracts, technology-stack taxonomy, enrichment signals, opportunity analysis and a visual dashboard. The main business value is not only the dataset, but the translation layer from public evidence to buyer segments, operational pain and software hypotheses.
+This project turns public-source signals into a structured intelligence product: company mapping, scraped source extracts, Firecrawl JSON outputs, APZI member-directory export, technology-stack taxonomy, enrichment signals, opportunity analysis and a visual dashboard. The main business value is not only the dataset, but the translation layer from public evidence to buyer segments, operational pain and software hypotheses.
+
+V2 proof layer:
+
+- 130 APZI member-directory rows extracted from public APZI listing pages.
+- 22 saved Firecrawl JSON outputs covering APZI, port digital systems, ECS, CSP/Navis N4, Kaleris, CLdN/DFDS and UECC.
+- 12 company-level vendor-proof rows separating observed products from inferred stack families.
+- A short PDF manager brief is available at `reports/executive-brief-v2.pdf`.
 
 ## Top 5 Findings
 
-1. **The strongest verified stack signals are ecosystem-level.** APICS, ZEDIS, NxtPort/RX-SeaPort, IRP, APICA digital twin, smart cameras and terminal API tooling are clearer than most company-level vendor disclosures.
-2. **Company operational stacks are mostly not publicly named.** TOS, YMS, WMS, TMS, EDI/API and customs software are often inferred from operational activity rather than directly observed.
-3. **Yard visibility and release-status clarity are recurring pains.** RoRo, automotive, trailer, terminal and warehouse flows all create value for better dwell, handover and exception visibility.
-4. **Customs workflows are becoming platform-led.** IRP and NxtPort/RX-SeaPort suggest that future tools should integrate with the port-community layer instead of building isolated document portals.
-5. **Webtech signals help with maturity scoring, but are not operational proof.** Drupal, WordPress, Next.js, React, Cloudflare, Google Tag Manager, Cookiebot and OneTrust indicate digital-channel maturity, not terminal or back-office stack confirmation.
+1. **CSP Zeebrugge has the strongest company-level terminal stack proof.** Public evidence names Navis N4, with Kaleris/Navis context and CSP VBS workflow evidence.
+2. **ECS has the strongest observed logistics engineering stack signal.** The official vacancy names .NET, Angular, C#, MS SQL Server, ASP.NET Core, Azure, Docker, Kubernetes and in-house logistics applications.
+3. **The strongest verified ecosystem signals are port-community systems.** APICS, ZEDIS, NxtPort/RX-SeaPort, IRP, open data, Terminal API and ETA Terminal Tool are clearer than most company-level vendor disclosures.
+4. **ICO, CLdN, DFDS and C.RO are high-value research targets.** Their operational complexity is strong, but named TOS/YMS/TMS/customs vendors remain mostly unverified.
+5. **Forwarders and shipping agents remain customs-software opportunity targets.** Public evidence confirms workflows, but named CargoWise/Descartes/local customs tooling still needs job, portal or vendor-case proof.
 
 ## Top 5 Opportunities
 
@@ -28,7 +35,7 @@ This project turns public-source signals into a structured intelligence product:
 
 ## Risks And Unknowns
 
-- APZI public pages do not expose a clean full member export through simple HTML scraping.
+- APZI public pages expose paginated member-directory cards; this v2 exports 130 rows from visible public pages, while APZI's broader "about 160 companies" statement still needs direct APZI/Voka confirmation.
 - Many operational stack labels remain inferred until validated by interviews, job postings, vendor cases or direct system evidence.
 - Webtech scans can identify public website technology, but they do not prove TOS/WMS/TMS or operational architecture.
 - VAT, registry and financial signals need official KBO/BCE and NBB verification before commercial use.
@@ -36,9 +43,9 @@ This project turns public-source signals into a structured intelligence product:
 
 ## Recommended Next Research
 
-1. Pull a full APZI member export through direct APZI/Voka access or browser/API inspection.
-2. Run Wappalyzer/BuiltWith checks and compare them with the lightweight webtech scan.
-3. Add job-posting signals for ERP, TOS, TMS, WMS, BI, cloud, cybersecurity, EDI and terminal planning.
+1. Directly validate the APZI 130-row public export against APZI/Voka's broader member base.
+2. Add detail-page scrapes for the highest-value APZI members: ICO, CLdN/C.RO, DFDS, ECS, CSP, UECC and customs forwarders.
+3. Search vacancies and vendor cases for ERP, TOS, TMS, WMS, BI, cloud, cybersecurity, EDI and terminal planning.
 4. Verify registry, VAT and financial signals through official Belgian sources.
 5. Interview or directly validate a small sample of operators across RoRo, forwarding, warehousing, customs and terminal segments.
 6. Repeat the same research model for Antwerp, Rotterdam, Hamburg or Dunkirk to prove transferability.

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import csv
 import html.parser
+import json
 import re
 import ssl
 import urllib.error
@@ -20,6 +21,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "data" / "apzi_member_candidates.csv"
+FIRECRAWL_DIR = ROOT / "data" / "firecrawl"
+MEMBER_EXPORT = ROOT / "data" / "apzi_members_export.csv"
 URLS = [
     "https://www.apzi.be/leden",
     "https://www.apzi.be/en/leden",
@@ -104,6 +107,96 @@ def looks_like_candidate(text: str) -> bool:
     return bool(classify(text) or re.search(r"\b(nv|bv|sa|ltd|logistics|terminal|ports?)\b", text, re.I))
 
 
+def member_name_from_url(url: str) -> str:
+    slug = url.rstrip("/").rsplit("/", 1)[-1]
+    slug = re.sub(r"-[0-9]+$", "", slug)
+    replacements = {
+        "csp": "CSP",
+        "dfds": "DFDS",
+        "dp": "DP",
+        "dsv": "DSV",
+        "ecs": "ECS",
+        "g4s": "G4S",
+        "h": "H",
+        "hr": "HR",
+        "ico": "ICO",
+        "it": "IT",
+        "kbc": "KBC",
+        "lng": "LNG",
+        "nv": "NV",
+        "nyk": "NYK",
+        "p": "P",
+        "o": "O",
+        "pdi": "PDI",
+        "sa": "SA",
+        "sds": "SDS",
+        "uk": "UK",
+    }
+    words = [replacements.get(part, part.capitalize()) for part in slug.split("-")]
+    return " ".join(words)
+
+
+def clean_activity_text(value: str) -> str:
+    value = re.sub(r"!\[\]\(<Base64-Image-Removed>\)", "", value)
+    value = value.replace("\\\n", "\n")
+    value = value.replace("\\", "\n")
+    parts = [re.sub(r"\s+", " ", part).strip() for part in value.splitlines()]
+    return "; ".join(part for part in parts if part)
+
+
+def extract_firecrawl_member_rows() -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    files = sorted(FIRECRAWL_DIR.glob("APZI_members_page*.json"))
+    pattern = re.compile(
+        r"\[(!\[\]\(<Base64-Image-Removed>\).*?)\]\((https://www\.apzi\.be/en/leden/[^)#?]+)\)",
+        re.S,
+    )
+
+    for path in files:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        markdown = payload.get("markdown", "")
+        page_match = re.search(r"/page/([0-9]+)", payload.get("metadata", {}).get("url", ""))
+        page = page_match.group(1) if page_match else "1"
+        for match in pattern.finditer(markdown):
+            activity_tags = clean_activity_text(match.group(1))
+            profile_url = match.group(2)
+            if profile_url in seen:
+                continue
+            seen.add(profile_url)
+            rows.append(
+                {
+                    "member_name": member_name_from_url(profile_url),
+                    "profile_url": profile_url,
+                    "activity_tags": activity_tags,
+                    "directory_page": page,
+                    "source_file": path.name,
+                    "extraction_status": "firecrawl_directory_card",
+                }
+            )
+
+    rows.sort(key=lambda row: (row["member_name"].lower(), row["profile_url"]))
+    return rows
+
+
+def write_member_export(rows: list[dict[str, str]]) -> None:
+    MEMBER_EXPORT.parent.mkdir(parents=True, exist_ok=True)
+    with MEMBER_EXPORT.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "member_name",
+                "profile_url",
+                "activity_tags",
+                "directory_page",
+                "source_file",
+                "extraction_status",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def main() -> int:
     rows: list[dict[str, str]] = []
     seen: set[tuple[str, str]] = set()
@@ -142,7 +235,11 @@ def main() -> int:
         writer.writeheader()
         writer.writerows(rows)
 
+    member_rows = extract_firecrawl_member_rows()
+    write_member_export(member_rows)
+
     print(f"Wrote {len(rows)} APZI visible-text candidates to {TARGET}")
+    print(f"Wrote {len(member_rows)} APZI member directory rows to {MEMBER_EXPORT}")
     return 0
 
 
